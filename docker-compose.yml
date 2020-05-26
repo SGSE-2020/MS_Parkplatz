@@ -1,0 +1,65 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend/ParkSpace
+    container_name: parkspace
+    restart: always
+    networks:
+      - frontnet
+    ports:
+      - "8080:8080"
+  backend:
+    build: ./backend
+    container_name: atlas
+    depends_on:
+      - mysql
+      - redis
+    restart: always
+    networks:
+      - backnet
+      - frontnet
+    ports:
+      - "8081:8081"
+      - "50051:50051"
+  mysql:
+    build: ./database/mysql
+    container_name: mysql
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backnet
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+      - MYSQL_DATABASES=parkspace
+    ports:
+      - "3306:3306"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+  redis:
+    build: ./database/redis
+    container_name: redis
+    restart: always
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    networks:
+      - backnet
+    ports:
+      - "6379:6379"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+volumes:
+  redis-data:
+  mysql-data:
+networks:
+  frontnet:
+  backnet:
