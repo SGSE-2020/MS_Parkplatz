@@ -2,46 +2,20 @@
 
 @import '~@angular/material/theming';
 @import './app-theme';
-
-$space-blue: (
-  50 : #e3e6ea,
-  100 : #b9c0ca,
-  200 : #8b96a7,
-  300 : #5c6c84,
-  400 : #394d69,
-  500 : #162d4f,
-  600 : #132848,
-  700 : #10223f,
-  800 : #0c1c36,
-  900 : #061126,
-  A100 : #628aff,
-  A200 : #2f64ff,
-  A400 : #0040fb,
-  A700 : #003ae1,
-  contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #ffffff,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #ffffff,
-    A400 : #ffffff,
-    A700 : #ffffff,
-  )
-);
+@import 'colors';
 
 @include mat-core();
 $primary: mat-palette($space-blue, 500);
-$accent:  mat-palette($mat-blue, 700, 800, 900);
+$accent: mat-palette($mat-blue, 700, 800, 900);
 $theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($theme);
 @include material-custom-theme($theme);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
