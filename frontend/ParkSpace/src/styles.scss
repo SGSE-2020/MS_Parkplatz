@@ -6,8 +6,9 @@
 
 @include mat-core();
 $primary: mat-palette($space-blue, 500);
-$accent: mat-palette($mat-blue, 700, 800, 900);
-$theme: mat-light-theme($primary, $accent);
+$accent: mat-palette($madder, 500);
+$warn: mat-palette($tangerine, 500);
+$theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 @include material-custom-theme($theme);
 
