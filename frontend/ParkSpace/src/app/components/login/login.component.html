@@ -13,7 +13,7 @@
 
         <mat-form-field class="full-width-form" color="accent" appearance="outline">
           <mat-label>E-Mail</mat-label>
-          <input matInput id="email" formControlName="eMail" required/>
+          <input matInput id="email" type="email" formControlName="eMail" required/>
           <mat-error *ngIf="form.controls.eMail?.hasError('email') && !form.controls.eMail?.hasError('required')">
             Please enter a valid EMail address
           </mat-error>
@@ -24,7 +24,7 @@
 
         <mat-form-field class="full-width-form" color="accent" appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput id="password" formControlName="password" required/>
+          <input matInput id="password" type="password" formControlName="password" required/>
           <button type="button" mat-icon-button matSuffix (click)="toggleUserPassword()"
                   [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="showUserPassword">
