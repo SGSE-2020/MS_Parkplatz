@@ -1,0 +1,49 @@
+.sidenav-fullscreen {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.sidenav {
+  top: 64px !important;
+}
+
+/*https://stackoverflow.com/questions/38164716/angular-material-toolbar-height-issue*/
+@media (min-width: 0) and (max-width: 959px) and (orientation: portrait) {
+  .sidenav {
+    top: 56px !important;
+  }
+}
+
+/*https://stackoverflow.com/questions/38164716/angular-material-toolbar-height-issue*/
+@media (min-width: 0) and (max-width: 959px) and (orientation: landscape) {
+  .sidenav {
+    top: 64px !important;
+  }
+}
+
+.basic-container {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+mat-toolbar {
+  top: 0;
+  position: fixed;
+  /* Ensure that your app's content doesn't overlap the toolbar */
+  z-index: 1000;
+}
+
+mat-sidenav {
+  width: 240px;
+}
+
+mat-nav-list {
+  left: 100px;
+}
+
+.space-horizontal {
+  flex: 1 1 auto;
+}

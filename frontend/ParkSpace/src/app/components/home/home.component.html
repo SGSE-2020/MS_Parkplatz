@@ -1,0 +1,53 @@
+<mat-toolbar class="toolbar mat-elevation-z6" color="primary">
+  <mat-toolbar-row>
+    <button (click)="sidenav.toggle()" fxHide.gt-sm="true" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 [routerLink]="['/landing']" class="mat-button" style="margin-right: 40px; padding-left: 0; padding-right: 0;">
+      ParkSpace</h1>
+    <div fxHide fxShow.gt-sm="true">
+      <a [routerLink]="['/my-reservations']" class="mat-button">My Reservations</a>
+      <a [routerLink]="['/new-reservation']" class="mat-button">New Reservation</a>
+      <a [routerLink]="['/report']" class="mat-button">Report</a>
+    </div>
+    <div class="space-horizontal"></div>
+    <div fxHide fxShow.gt-sm="true">
+      <button mat-raised-button (click)="logout()">
+        <span>Logout</span>
+      </button>
+    </div>
+    <button [matMenuTriggerFor]="toolbarVertMenu" class="toolbar-button" fxHide.gt-sm="true" mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #toolbarVertMenu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav sidenav-fullscreen">
+  <mat-sidenav #sidenav [mode]="(screenWidth < 840) ? 'over' : 'side'">
+    <mat-nav-list>
+      <a (click)="onRowClicked('my-reservation'); toggleIfMobile()" mat-list-item routerLink="/my-reservations">
+        <mat-icon matListIcon class="drawer-menu-icon">assignment</mat-icon>
+        <span mat-line>My Reservations</span>
+      </a>
+      <a (click)="onRowClicked('new-reservation'); toggleIfMobile()" mat-list-item routerLink="/new-reservation">
+        <mat-icon matListIcon class="drawer-menu-icon">fiber_new</mat-icon>
+        <span mat-line>New Reservation</span>
+      </a>
+      <a (click)="onRowClicked('report'); toggleIfMobile()" mat-list-item routerLink="/report">
+        <mat-icon matListIcon class="drawer-menu-icon">report_problem</mat-icon>
+        <span mat-line>Report</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content #sidenavContent>
+    <div class="basic-container">
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </div>
+    <!--TODO integrate footer-->
+    <!--<app-footer></app-footer>-->
+  </mat-sidenav-content>
+</mat-sidenav-container>
