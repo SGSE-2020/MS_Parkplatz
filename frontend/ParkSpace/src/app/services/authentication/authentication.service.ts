@@ -23,7 +23,6 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.angularFireAuth.signOut();
-    this.router.navigate(['/login']);
+    this.angularFireAuth.signOut().then(r => this.router.navigate(['/login']));
   }
 }
