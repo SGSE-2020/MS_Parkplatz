@@ -1,6 +1,37 @@
-<div style="width: 80%; margin: 0 auto;">
-  <div style="margin-top: 64px; margin-bottom: 96px;">
-    <h1 class="mat-display-1" style="margin-bottom: 32px;">Landing</h1>
-  </div>
+<div class="landing-wrapper">
+  <div class="main-content">
+    <div class="main-content-layout" fxLayout="column" fxLayoutAlign="space-between">
+      <section id="landing-introduction">
+        <h1 class="mat-display-1 main-content-greeting">Welcome User-First-Name!</h1>
+        <h1 ngClass.gt-sm="mat-display-1 main-content-text">ParkSpace is now available in the Early Access Program
+          (EAP). EAP users have full access to features and function based on our preliminary prices. Keep in mind our
+          services are under heavy cosntruction and changes may occur at any time.</h1>
+        <p class="mat-caption main-content-note">Prices, features and functions are approximate and given for reference
+          only.<br>They may be adjusted before the public release.</p>
+      </section>
 
+      <section id="landing-quick-actions">
+        <h2 class="mat-h2">Quick actions</h2>
+        <div class="main-content-quick-actions">
+          <mat-nav-list>
+            <mat-list-item>View my itinerary</mat-list-item>
+            <mat-list-item>Reserve a parking space</mat-list-item>
+            <mat-list-item>Cancel a reservation</mat-list-item>
+            <mat-list-item>Report a problem</mat-list-item>
+          </mat-nav-list>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="main-content-background-wrapper" fxHide.lt-lg="true">
+  <div id="stars-layer-1"></div>
+  <div id="stars-layer-2"></div>
+  <div id="stars-layer-3"></div>
+  <img id="car-pulse" alt="Landing car anim" height="400" src="./assets/images/landing/car_400x190.png"
+       style="position: fixed; right: 10%; top: calc(50% - 150px);">
+  <svg preserveAspectRatio="none" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+    <path d="M77.59,-15.28 C35.83,62.66 94.52,89.30 48.24,171.20 L0.00,150.00 L0.00,0.00 Z"></path>
+  </svg>
 </div>

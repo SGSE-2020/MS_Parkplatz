@@ -1,4 +1,5 @@
 @import '../node_modules/@angular/material/theming';
+@import 'src/app/components/landing/landing.component.theme';
 
 @mixin material-custom-theme($theme) {
   $primary: map-get($theme, primary);
@@ -8,5 +9,5 @@
   $foreground: map-get($theme, foreground);
 
   // Include theme styles for custom components.
-
+  @include landing-component-theme($theme);
 }
