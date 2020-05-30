@@ -3,20 +3,22 @@
     <button (click)="sidenav.toggle()" fxHide.gt-sm="true" mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 [routerLink]="['/landing']" class="mat-button" style="margin-right: 40px; padding-left: 0; padding-right: 0;">
-      ParkSpace</h1>
+    <h1 [routerLink]="['/landing']" class="mat-button" style="margin-right: 40px; padding-left: 0; padding-right: 0;">ParkSpace</h1>
     <div fxHide fxShow.gt-sm="true">
-      <a [routerLink]="['/my-reservations']" class="mat-button">My Reservations</a>
-      <a [routerLink]="['/new-reservation']" class="mat-button">New Reservation</a>
+      <a [routerLink]="['/reservation']" class="mat-button">Itinerary</a>
+      <a [routerLink]="['/reservation']" class="mat-button">Reservation</a>
       <a [routerLink]="['/report']" class="mat-button">Report</a>
     </div>
     <div class="space-horizontal"></div>
+    <div style="padding-right: 12px">
+      <p class="mat-h4" style="margin-bottom: 0">User-First-Name</p>
+    </div>
     <div fxHide fxShow.gt-sm="true">
       <button mat-raised-button (click)="logout()">
         <span>Logout</span>
       </button>
     </div>
-    <button [matMenuTriggerFor]="toolbarVertMenu" class="toolbar-button" fxHide.gt-sm="true" mat-icon-button>
+    <button [matMenuTriggerFor]="toolbarVertMenu" fxHide.gt-sm="true" mat-icon-button>
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #toolbarVertMenu="matMenu">
@@ -29,15 +31,11 @@
 <mat-sidenav-container class="sidenav sidenav-fullscreen">
   <mat-sidenav #sidenav [mode]="(screenWidth < 840) ? 'over' : 'side'">
     <mat-nav-list>
-      <a (click)="onRowClicked('my-reservation'); toggleIfMobile()" mat-list-item routerLink="/my-reservations">
+      <a (click)="onRowClicked('reservation'); toggleIfMobile()" mat-list-item [routerLink]="['/reservation']">
         <mat-icon matListIcon class="drawer-menu-icon">assignment</mat-icon>
-        <span mat-line>My Reservations</span>
+        <span mat-line>Reservation</span>
       </a>
-      <a (click)="onRowClicked('new-reservation'); toggleIfMobile()" mat-list-item routerLink="/new-reservation">
-        <mat-icon matListIcon class="drawer-menu-icon">fiber_new</mat-icon>
-        <span mat-line>New Reservation</span>
-      </a>
-      <a (click)="onRowClicked('report'); toggleIfMobile()" mat-list-item routerLink="/report">
+      <a (click)="onRowClicked('report'); toggleIfMobile()" mat-list-item [routerLink]="['/report']">
         <mat-icon matListIcon class="drawer-menu-icon">report_problem</mat-icon>
         <span mat-line>Report</span>
       </a>
