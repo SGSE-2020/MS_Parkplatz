@@ -27,7 +27,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {FakeBackendProvider} from './interceptors/fake-backend/fake-backend.interceptor';
 import {TokenInterceptor} from './interceptors/token/token.interceptor';
-import { PlaygroundComponent } from './components/playground/playground.component';
+import {PlaygroundComponent} from './components/playground/playground.component';
+import {ReservationComponent} from './components/reservation/reservation.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ import { PlaygroundComponent } from './components/playground/playground.componen
     LoginComponent,
     HomeComponent,
     LandingComponent,
-    PlaygroundComponent
+    PlaygroundComponent,
+    ReservationComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -57,7 +62,10 @@ import { PlaygroundComponent } from './components/playground/playground.componen
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     FakeBackendProvider,

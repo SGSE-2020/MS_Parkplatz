@@ -5,6 +5,7 @@ import {LoginComponent} from './components/login/login.component';
 
 import {PlaygroundComponent} from './components/playground/playground.component';
 import {AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import {ReservationComponent} from './components/reservation/reservation.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToLanding = () => redirectLoggedInTo(['landing']);
@@ -14,6 +15,7 @@ const routes: Routes = [
     path: '', component: HomeComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}, children: [
       {path: '', redirectTo: 'landing', pathMatch: 'full'},
       {path: 'landing', component: LandingComponent},
+      {path: 'reservation', component: ReservationComponent},
     ]
   },
   {path: 'login', component: LoginComponent, data: {authGuardPipe: redirectLoggedInToLanding}},
