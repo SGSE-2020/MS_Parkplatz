@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  restApi: 'http://' + 'localhost' + ':' + '8081',
+  restApi: 'http://' + 'localhost' + ':' + '8080',
   restApiVersion: 'v1',
 
   firebase: {
