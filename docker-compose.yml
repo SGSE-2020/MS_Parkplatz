@@ -25,6 +25,7 @@ services:
     build: ./database/mysql
     container_name: mysql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
@@ -32,7 +33,7 @@ services:
     environment:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
-      - MYSQL_RANDOM_ROOT_PASSWORD=true
+      - MYSQL_ROOT_PASSWORD=test
       - MYSQL_DATABASES=parkspace
     ports:
       - "3306:3306"
