@@ -13,7 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authenticationService.currentUserToken;
     const isLoggedIn = token !== undefined;
-    const isApiUrl = request.url.startsWith(`${environment.restApi}/${environment.restApiVersion}`);
+    const isApiUrl = request.url.startsWith(`${environment.restApi}`);
     const isLoginAttempt = request.url.startsWith(`https://securetoken.googleapis.com/v1/token`);
     const isGoogleApi = request.url.startsWith(`https://www.googleapis.com/identitytoolkit`);
     if (isLoggedIn && isApiUrl && !isLoginAttempt && !isGoogleApi) {
