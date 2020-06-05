@@ -7,7 +7,7 @@ services:
     networks:
       - frontnet
     ports:
-      - "8080:8080"
+      - "8080:80"
   backend:
     build: ./backend
     container_name: atlas
@@ -19,7 +19,7 @@ services:
       - backnet
       - frontnet
     ports:
-      - "8081:8081"
+      - "8081:8080"
       - "50051:50051"
   mysql:
     build: ./database/mysql
