@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: ms-parkplatz
+  name: ms-parkplatz
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ms-parkplatz
+    spec:
+      containers:
+        - image: ms-parkplatz-frontend
+          name: ms-parkplatz-frontend
+          ports:
+            - containerPort: 80
+        - image: ms-parkplatz-backend
+          name: ms-parkplatz-backend
+          ports:
+            - containerPort: 8080
+            - containerPort: 50051
+      restartPolicy: Always
+status: {}
