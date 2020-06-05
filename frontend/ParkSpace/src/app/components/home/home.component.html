@@ -3,15 +3,16 @@
     <button (click)="sidenav.toggle()" fxHide.gt-sm="true" mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 [routerLink]="['/landing']" class="mat-button" style="margin-right: 40px; padding-left: 0; padding-right: 0;">ParkSpace</h1>
+    <h1 [routerLink]="['/landing']" class="mat-button" style="margin-right: 40px; padding-left: 0; padding-right: 0;">
+      ParkSpace</h1>
     <div fxHide fxShow.gt-sm="true">
-      <a [routerLink]="['/reservation']" class="mat-button">Itinerary</a>
-      <a [routerLink]="['/reservation']" class="mat-button">Reservation</a>
+      <a [routerLink]="['/itinerary']" class="mat-button">Itinerary</a>
+      <a [routerLink]="['/booking']" class="mat-button">Booking</a>
       <a [routerLink]="['/report']" class="mat-button">Report</a>
     </div>
     <div class="space-horizontal"></div>
     <div style="padding-right: 12px">
-      <p class="mat-h4" style="margin-bottom: 0">User-First-Name</p>
+      <p class="mat-h4" style="margin-bottom: 0">{{getUserDisplayname()}}</p>
     </div>
     <div fxHide fxShow.gt-sm="true">
       <button mat-raised-button (click)="logout()">
@@ -45,7 +46,6 @@
     <div class="basic-container">
       <router-outlet (activate)="onActivate($event)"></router-outlet>
     </div>
-    <!--TODO integrate footer-->
-    <!--<app-footer></app-footer>-->
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

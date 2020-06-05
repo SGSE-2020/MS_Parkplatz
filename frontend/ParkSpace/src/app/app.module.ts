@@ -28,10 +28,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {FakeBackendProvider} from './interceptors/fake-backend/fake-backend.interceptor';
 import {TokenInterceptor} from './interceptors/token/token.interceptor';
 import {PlaygroundComponent} from './components/playground/playground.component';
-import {ReservationComponent} from './components/reservation/reservation.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { ItineraryComponent } from './components/itinerary/itinerary.component';
+import { BookingComponent } from './components/booking/booking.component';
+import { ReportComponent } from './components/report/report.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,10 @@ import {MatSortModule} from '@angular/material/sort';
     HomeComponent,
     LandingComponent,
     PlaygroundComponent,
-    ReservationComponent
+    ItineraryComponent,
+    BookingComponent,
+    ReportComponent,
+    FooterComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -65,7 +75,11 @@ import {MatSortModule} from '@angular/material/sort';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     FakeBackendProvider,

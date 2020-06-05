@@ -3,6 +3,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {NavigationEnd, Router} from '@angular/router';
 import {MatSidenav, MatSidenavContent} from '@angular/material/sidenav';
 import {AuthenticationService} from '../../services/authentication/authentication.service';
+import {UserService} from '../../services/user/user.service';
+import {Observable} from 'rxjs';
+import {UserModel} from '../../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +13,8 @@ import {AuthenticationService} from '../../services/authentication/authenticatio
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  user: UserModel;
 
   screenWidth: number;
 
@@ -21,7 +26,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router,
               public dialog: MatDialog,
-              public  authenticationService: AuthenticationService) {
+              public  authenticationService: AuthenticationService,
+              private userService: UserService) {
     this.screenWidth = window.innerWidth;
   }
 
@@ -49,6 +55,12 @@ export class HomeComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
+
+    this.userService.getUser().subscribe(x => this.user = x);
+  }
+
+  getUserDisplayname(): string {
+    return this.user ? this.user.firstName + ' ' + this.user.lastName : '';
   }
 
   checkMenu() {

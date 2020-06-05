@@ -73,14 +73,6 @@ $density: 700;
 
 #stars-layer-1 {
   content: " ";
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: box-shadow-generator($density);
-  animation: phaseDirectional 50s linear infinite;
-}
-
-#stars-layer-2 {
-  content: " ";
   width: 2px;
   height: 2px;
   background: transparent;
@@ -89,7 +81,7 @@ $density: 700;
   animation: phaseDirectional 100s linear infinite;
 }
 
-#stars-layer-3 {
+#stars-layer-2 {
   content: " ";
   width: 3px;
   height: 3px;
@@ -103,23 +95,13 @@ $density: 700;
   content: " ";
   position: absolute;
   top: 2000px;
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: box-shadow-generator($density);
-}
-
-#stars-layer-2:after {
-  content: " ";
-  position: absolute;
-  top: 2000px;
   width: 2px;
   height: 2px;
   background: transparent;
   box-shadow: box-shadow-generator($density);
 }
 
-#stars-layer-3:after {
+#stars-layer-2:after {
   content: " ";
   position: absolute;
   top: 2000px;

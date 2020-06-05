@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, isDevMode, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication/authentication.service';
@@ -9,7 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   form = this.fb.group({
     eMail: ['', [Validators.required, Validators.email]],
@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private snackBar: MatSnackBar
-  ) {
+    private snackBar: MatSnackBar) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserToken) {
       this.router.navigate(['/']);
@@ -42,9 +41,24 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
+  ngAfterViewInit(): void {
+    if (isDevMode()) {
+      this.snackBar.open('Login is disabled for development mode.', 'Dismiss', {
+        duration: 6000
+      });
+    }
+  }
+
   submit() {
     // stop here if form is invalid
     if (this.form.invalid) {
+      return;
+    }
+
+    if (isDevMode()) {
+      this.snackBar.open('Login is disabled for development mode.', 'Dismiss', {
+        duration: 6000
+      });
       return;
     }
 

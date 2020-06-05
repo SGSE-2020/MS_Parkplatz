@@ -5,7 +5,17 @@
 
 .table-container {
   position: relative;
-  max-height: 400px;
+  height: 350px;
+  overflow: auto;
+}
+
+.table-next-wrapper {
+  position: relative;
+  min-height: 65px;
+}
+
+.table-next-container {
+  position: relative;
   overflow: auto;
 }
 
@@ -26,11 +36,3 @@ table {
   justify-content: center;
 }
 
-.mat-column-number,
-.mat-column-state {
-  max-width: 64px;
-}
-
-.mat-column-created {
-  max-width: 124px;
-}
