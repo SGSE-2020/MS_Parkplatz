@@ -85,6 +85,7 @@ CREATE TABLE IF NOT EXISTS parkspace.reservation (
     user_id VARCHAR(255) NULL,
     start_datetime TIMESTAMP NULL,
     end_datetime TIMESTAMP NULL,
+    cancelled BOOLEAN NULL,
     PRIMARY KEY (id),
     INDEX fk_reservation_spot1_idx (spot_id ASC),
     CONSTRAINT fk_reservation_spot1
