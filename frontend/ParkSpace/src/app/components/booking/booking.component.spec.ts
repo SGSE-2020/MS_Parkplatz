@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BookingComponent } from './booking.component';
+import {BookingComponent} from './booking.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('BookingComponent', () => {
   let component: BookingComponent;
@@ -8,9 +11,14 @@ describe('BookingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookingComponent ]
+      declarations: [BookingComponent],
+      imports: [
+        ReactiveFormsModule,
+        MatSnackBarModule,
+        HttpClientTestingModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

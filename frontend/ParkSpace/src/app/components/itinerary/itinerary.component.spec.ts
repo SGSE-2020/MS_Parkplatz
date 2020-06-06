@@ -1,6 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ItineraryComponent } from './itinerary.component';
+import {ItineraryComponent} from './itinerary.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('ItineraryComponent', () => {
   let component: ItineraryComponent;
@@ -8,9 +12,15 @@ describe('ItineraryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItineraryComponent ]
+      declarations: [ItineraryComponent],
+      imports: [
+        HttpClientTestingModule,
+        MatSnackBarModule,
+        MatPaginatorModule,
+        MatSortModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
