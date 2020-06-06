@@ -24,16 +24,16 @@ jobs:
 
       - name: Install packages
         run: npm ci
-        working-directory: ./frontend/Parkspace
+        working-directory: ./frontend/ParkSpace
 
       - name: Build production bundle
         run: ./node_modules/.bin/ng build --prod
-        working-directory: ./frontend/Parkspace
+        working-directory: ./frontend/ParkSpace
 
       - name: Lint
         run: ./node_modules/.bin/ng lint
-        working-directory: ./frontend/Parkspace
+        working-directory: ./frontend/ParkSpace
 
       - name: Test
         run: ./node_modules/.bin/ng test --watch=false --browsers=ChromeHeadless
-        working-directory: ./frontend/Parkspace
+        working-directory: ./frontend/ParkSpace
