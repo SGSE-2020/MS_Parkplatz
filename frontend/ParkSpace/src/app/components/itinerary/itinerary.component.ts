@@ -26,8 +26,7 @@ export class ItineraryComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private reservationService: ReservationService,
-              private snackBar: MatSnackBar,
-              private router: Router) {
+              private snackBar: MatSnackBar) {
   }
 
   ngAfterViewInit() {
