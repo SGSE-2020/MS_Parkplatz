@@ -15,10 +15,6 @@ jobs:
       matrix:
         node-version: [12.x]
 
-    defaults:
-      run:
-        working-directory: ./frontend/Parkspace
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -28,12 +24,16 @@ jobs:
 
       - name: Install packages
         run: npm ci
+        working-directory: ./frontend/Parkspace
 
       - name: Build production bundle
         run: ./node_modules/.bin/ng build --prod
+        working-directory: ./frontend/Parkspace
 
       - name: Lint
         run: ./node_modules/.bin/ng lint
+        working-directory: ./frontend/Parkspace
 
       - name: Test
         run: ./node_modules/.bin/ng test --watch=false --browsers=ChromeHeadless
+        working-directory: ./frontend/Parkspace
