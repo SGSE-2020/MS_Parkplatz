@@ -3,7 +3,7 @@ FROM node:lts as build
 WORKDIR /usr/src/app
 COPY . ./
 RUN npm ci
-RUN ./node_modules/.bin/ng build
+RUN ./node_modules/.bin/ng build --prod
 
 # stage deploy
 FROM nginx:alpine
