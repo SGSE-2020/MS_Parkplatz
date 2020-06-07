@@ -27,5 +27,5 @@ jobs:
         working-directory: ./backend/Atlas
 
       - name: Build production bundle
-        run: npm build
+        run: npm run-script build
         working-directory: ./backend/Atlas
