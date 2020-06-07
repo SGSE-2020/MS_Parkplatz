@@ -5,6 +5,7 @@ metadata:
     app: ms-parkplatz
   name: ms-parkplatz
 spec:
+  type: NodePort
   ports:
     - name: "80"
       port: 80
