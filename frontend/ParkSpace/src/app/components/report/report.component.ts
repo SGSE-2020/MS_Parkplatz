@@ -26,7 +26,7 @@ export class ReportComponent implements OnInit {
     }
   ];
 
-  constructor(private fb: FormBuilder,) {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
