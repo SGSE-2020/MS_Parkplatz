@@ -31,9 +31,13 @@
 <mat-sidenav-container class="sidenav sidenav-fullscreen">
   <mat-sidenav #sidenav [mode]="(screenWidth < 840) ? 'over' : 'side'">
     <mat-nav-list>
-      <a (click)="onRowClicked('reservation'); toggleIfMobile()" mat-list-item [routerLink]="['/reservation']">
+      <a (click)="onRowClicked('booking'); toggleIfMobile()" mat-list-item [routerLink]="['/booking']">
         <mat-icon matListIcon class="drawer-menu-icon">assignment</mat-icon>
-        <span mat-line>Reservation</span>
+        <span mat-line>Booking</span>
+      </a>
+      <a (click)="onRowClicked('itinerary'); toggleIfMobile()" mat-list-item [routerLink]="['/itinerary']">
+        <mat-icon matListIcon class="drawer-menu-icon">assignment</mat-icon>
+        <span mat-line>Itinerary</span>
       </a>
       <a (click)="onRowClicked('report'); toggleIfMobile()" mat-list-item [routerLink]="['/report']">
         <mat-icon matListIcon class="drawer-menu-icon">report_problem</mat-icon>
