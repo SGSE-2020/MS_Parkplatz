@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (isDevMode()) {
-      this.snackBar.open('Login is disabled for development mode.', 'Dismiss', {
+      this.snackBar.open('Running in debug mode', 'Dismiss', {
         duration: 6000
       });
     }
@@ -52,13 +52,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   submit() {
     // stop here if form is invalid
     if (this.form.invalid) {
-      return;
-    }
-
-    if (isDevMode()) {
-      this.snackBar.open('Login is disabled for development mode.', 'Dismiss', {
-        duration: 6000
-      });
       return;
     }
 
