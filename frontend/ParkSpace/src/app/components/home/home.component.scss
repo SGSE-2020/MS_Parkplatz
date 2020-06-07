@@ -36,6 +36,12 @@ mat-toolbar {
   z-index: 1000;
 }
 
+.toolbar-logo {
+  margin-right: 40px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 mat-sidenav {
   width: 240px;
 }
