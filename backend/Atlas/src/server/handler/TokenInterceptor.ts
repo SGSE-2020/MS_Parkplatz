@@ -20,7 +20,7 @@ export async function tokenInterceptor(req: any, res: any, next: any) {
     }
     try {
         const result = await gRpcWrapper(bearerSplit[1])
-        req.userUid = (<UserId>result).getUid();
+        req.userUid = result;
     } catch (error) {
         return next(error);
     }
@@ -55,7 +55,7 @@ function gRpcVerify(tokenString, successCallback, errorCallback) {
             //     errorCallback(new errors.InternalServerError(err));
             // }
         } else {
-            successCallback(response)
+            successCallback(response.getUid())
         }
     });
 }
