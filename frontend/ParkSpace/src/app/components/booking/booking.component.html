@@ -19,7 +19,7 @@
             </mat-form-field>
             <p>{{getParkingAreaByID(selectedArea)?.availableSpots}} out of {{getParkingAreaByID(selectedArea)?.totalSpots}} spots are available</p>
           </div>
-          <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <div fxLayout="row wrap" fxLayoutGap="10px grid" fxLayoutAlign="center">
             <div class="icon-item-container">
               <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.food_drink === false">
                 restaurant
