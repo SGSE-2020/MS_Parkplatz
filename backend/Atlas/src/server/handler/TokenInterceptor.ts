@@ -2,7 +2,7 @@ import * as errors from "restify-errors";
 import {civilOfficeGrpc} from "../../enviroment";
 import * as grpc from "grpc";
 import {UserServiceClient} from "../../proto/user_grpc_pb";
-import {UserId, UserToken} from "../../proto/user_pb";
+import {UserToken} from "../../proto/user_pb";
 
 export async function tokenInterceptor(req: any, res: any, next: any) {
     const bearer = req.header('Authorization');
@@ -46,7 +46,7 @@ function gRpcVerify(tokenString, successCallback, errorCallback) {
     userServiceClient.verifyUser(userToken, function (err, response) {
         if (err !== null) {
             console.log(err);
-            errorCallback(new errors.InternalServerError(err));
+            errorCallback(new errors.InternalServerError('tokenInterceptor:' + err));
             // if (err.code == 14) {
             //     errorCallback(new errors.UnauthorizedError('Invalid \'Bearer\' token.', err));
             // } else if (err.code == 2) {
