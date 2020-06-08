@@ -34,6 +34,10 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.angularFireAuth.signOut().then(r => this.router.navigate(['/login']));
+    localStorage.removeItem('token');
+    this.currentUserSubject.next(null);
+    this.angularFireAuth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }
