@@ -1,8 +1,7 @@
 export const environment = {
   production: true,
 
-  restApi: 'http://' + 'localhost' + ':' + '8080',
-  restApiVersion: 'v1',
+  restApi: 'http://' + 'parkplatz.dvess.network' + '/api',
 
   firebase: {
     apiKey: 'AIzaSyBvTg0_QrhEvQ9UeZPH8--E2JZ55KA_u_c',
