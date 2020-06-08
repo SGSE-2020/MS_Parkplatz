@@ -57,12 +57,12 @@ function gRpcVerify(uid, successCallback, errorCallback) {
     userServiceClient.getUser(userId, function (err, response) {
         if (err !== null) {
             console.log(err);
-
-            if (err.code == 2) {
-                errorCallback(new errors.InternalServerError('Backend Civil-Office not reachable.'));
-            } else {
-                errorCallback(new errors.InternalServerError(err));
-            }
+            errorCallback(new errors.InternalServerError(err));
+            // if (err.code == 2) {
+            //     errorCallback(new errors.InternalServerError('Backend Civil-Office not reachable.'));
+            // } else {
+            //     errorCallback(new errors.InternalServerError(err));
+            // }
         } else {
             successCallback(response)
         }
