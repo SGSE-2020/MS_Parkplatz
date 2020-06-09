@@ -1,0 +1,208 @@
+<div style="width: 80%; margin: 0 auto; padding-bottom: 64px;">
+  <div style="margin-top: 64px; margin-bottom: 64px;">
+    <h1 class="mat-display-1" style="margin-bottom: 32px;">Booking</h1>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <div fxFlex="32">
+      <mat-card class="information-card">
+        <mat-card-title>Spot information</mat-card-title>
+        <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
+          <div>
+            <mat-form-field>
+              <mat-label>Parking area</mat-label>
+              <mat-select [(value)]="selectedArea">
+                <mat-option *ngFor="let place of places" [value]="place.id">
+                  {{place.displayName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <p>{{getParkingAreaByID(selectedArea)?.availableSpots}} out of {{getParkingAreaByID(selectedArea)?.totalSpots}} spots are available</p>
+          </div>
+          <div fxLayout="row wrap" fxLayoutGap="10px grid" fxLayoutAlign="center">
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.food_drink === false">
+                restaurant
+              </mat-icon>
+              <p class="mat-caption">Food&Drink</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.bar === false">
+                local_bar
+              </mat-icon>
+              <p class="mat-caption">Bar</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.fast_food === false">
+                fastfood
+              </mat-icon>
+              <p class="mat-caption">FastFood</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.amenities === false">
+                soap
+              </mat-icon>
+              <p class="mat-caption">Amenities</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.shopping === false">
+                local_grocery_store
+              </mat-icon>
+              <p class="mat-caption">Shopping</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.facilities === false">
+                sports_football
+              </mat-icon>
+              <p class="mat-caption">Facilities</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.two_wheeler === false">
+                two_wheeler
+              </mat-icon>
+              <p class="mat-caption">Two Wheeler</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.hotel === false">
+                local_hotel
+              </mat-icon>
+              <p class="mat-caption">Hotel</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.grill === false">
+                outdoor_grill
+              </mat-icon>
+              <p class="mat-caption">Grill</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.medical_aid === false">
+                medical_services
+              </mat-icon>
+              <p class="mat-caption">Medical Aid</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.gas === false">
+                local_gas_station
+              </mat-icon>
+              <p class="mat-caption">Gas</p>
+            </div>
+            <div class="icon-item-container">
+              <mat-icon [class.not-available]="getParkingAreaByID(selectedArea)?.amenities.charging === false">
+                ev_station
+              </mat-icon>
+              <p class="mat-caption">Charging</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="32">
+      <mat-card class="information-card">
+        <mat-card-title>Schedule information</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="form" (ngSubmit)="submit()" style="height: 100%">
+            <div fxLayout="row" fxLayoutGap="10px">
+              <mat-form-field>
+                <mat-label>Date of reservation</mat-label>
+                <input matInput type="datetime-local" formControlName="reservationStartDateTime" required>
+                <mat-error *ngIf="form.controls.reservationStartDateTime?.hasError('required')">
+                  Please enter a value between 1 and 9
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>End of reservation</mat-label>
+                <input matInput type="datetime-local" formControlName="reservationEndDateTime" required>
+                <mat-error *ngIf="form.controls.reservationEndDateTime?.hasError('required')">
+                  Please enter a value between 1 and 9
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-form-field>
+              <mat-label>Number of spots</mat-label>
+              <input matInput type="number" min="1" max="9" formControlName="numberOfSpots" required>
+              <mat-error *ngIf="form.controls.numberOfSpots?.hasError('required')">
+                Please enter a value between 1 and 9
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Your note</mat-label>
+              <textarea matInput formControlName="customerNote" rows="5"></textarea>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="32">
+      <mat-card class="information-card">
+        <mat-card-title>Additional services</mat-card-title>
+        <mat-card-subtitle>Are you interested in our parking spot insurance and services?</mat-card-subtitle>
+        <mat-card-content>
+          <div style="padding-bottom: 16px">
+            <mat-checkbox>Yes, i would like to insure my car for a full risk excess of loss in case of any unexpected
+              event or occurrence, which applies conditionally.
+            </mat-checkbox>
+          </div>
+          <div style="padding-bottom: 16px">
+            <mat-checkbox>Yes, i would like to have my car washed and cleaned within the span of my reservation period
+              by a professional cleaning team.
+            </mat-checkbox>
+          </div>
+          <div style="padding-bottom: 16px">
+            <mat-checkbox>Yes, i would like to have my car parked and delivered back to me by a chauffeur service while
+              i am engaged with my concerns.
+            </mat-checkbox>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+  </div>
+  <section id="booking-details">
+    <div style="padding-top: 64px; padding-bottom: 16px;">
+      <h1 class="mat-h1">Booking details</h1>
+    </div>
+
+    <div class="mat-table mat-elevation-z8">
+      <div class="mat-header-row">
+        <div class="mat-header-cell">Position</div>
+        <div class="mat-header-cell">Price</div>
+      </div>
+      <div class="mat-row">
+        <div class="mat-cell">Parking spot reservation</div>
+        <div class="mat-cell">65.48€</div>
+      </div>
+      <div class="mat-row">
+        <div class="mat-cell">Duration surcharge</div>
+        <div class="mat-cell">18.48€</div>
+      </div>
+      <div class="mat-row">
+        <div class="mat-cell">Reservation fee</div>
+        <div class="mat-cell">16.11€</div>
+      </div>
+      <div class="mat-row">
+        <div class="mat-cell">Reservation surcharge</div>
+        <div class="mat-cell">12.22€</div>
+      </div>
+
+      <div class="mat-row">
+        <div class="mat-bold-cell">Total</div>
+        <div class="mat-bold-cell">112.29€</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div fxLayout="column" style="padding-bottom: 16px; padding-top: 32px;">
+      <mat-checkbox (change)="consentTermChange($event)">I agree to the terms and conditions and the data protection
+        policy.
+      </mat-checkbox>
+      <mat-checkbox (change)="consentPaymentChange($event)">I agree to pay for the order I am placing.</mat-checkbox>
+    </div>
+    <button mat-raised-button color="accent" (click)="submit()">Book Now</button>
+  </section>
+</div>

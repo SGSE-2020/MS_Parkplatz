@@ -1,0 +1,11 @@
+# Ignore specifc
+.idea
+node_modules
+README.md
+ParkSpace.iml
+
+# Allow files and directories
+!Dockerfile
+!.dockerignore
+!nginx
+!dist

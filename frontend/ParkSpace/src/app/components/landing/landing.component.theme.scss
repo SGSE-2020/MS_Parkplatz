@@ -1,0 +1,27 @@
+@import 'node_modules/@angular/material/theming';
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin landing-component-theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+
+  .accent-ribbon {
+    // Use mat-color to extract individual colors from a palette.
+    background-color: mat-color($accent);
+
+    h1, h2, h3 {
+      color: mat-color($primary);
+    }
+  }
+
+  .main-content-background-wrapper {
+    background: #1a365e;
+    //background: radial-gradient(ellipse at bottom, #10223b 10%, #162d4f 100%)
+  }
+
+  .main-content-background-wrapper svg path {
+    fill: mat-color($background, background);
+  }
+}

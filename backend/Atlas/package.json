@@ -1,0 +1,37 @@
+{
+  "name": "atlas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf build && tsc",
+    "serve": "nodemon --exec ts-node src/app.ts",
+    "start": "ts-node src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grpc_tools_node_protoc_ts": "^4.0.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.4",
+    "@types/restify": "^8.4.2",
+    "@types/restify-errors": "^4.3.3",
+    "google-protobuf": "^3.12.2",
+    "grpc": "^1.24.3",
+    "grpc-tools": "^1.9.0",
+    "mysql": "^2.18.1",
+    "pg-hstore": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
+    "restify-errors": "^8.0.2",
+    "rimraf": "^3.0.2",
+    "typeorm": "^0.2.25",
+    "uuid": "^8.1.0"
+  }
+}
