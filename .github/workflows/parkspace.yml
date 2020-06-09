@@ -1,6 +1,6 @@
 name: ParkSpace frontend CI
 
-on: [push, master]
+on: [push, pull_request]
 
 jobs:
   build:

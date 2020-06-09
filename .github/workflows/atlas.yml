@@ -1,6 +1,6 @@
 name: Atlas backend CI
 
-on: [push, master]
+on: [push, pull_request]
 
 jobs:
   build:
