@@ -22,5 +22,22 @@ spec:
           ports:
             - containerPort: 8080
             - containerPort: 50051
+        - image: ms-parkplatz-database
+          name: ms-parkplatz-database
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "test"
+            - name: MYSQL_USER
+              value: "user"
+            - name: MYSQL_PASSWORD
+              value: "password"
+            - name: MYSQL_DATABASES
+              value: "parkspace"
+        - image: ms-parkplatz-cache
+          name: ms-parkplatz-cache
+          ports:
+            - containerPort: 6379
       restartPolicy: Always
 status: {}
