@@ -1,0 +1,42 @@
+name: "Dockerfile-Linting"
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/Dockerfile'
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pull HaDoLint image
+        run: docker pull hadolint/hadolint
+      - name: Lint Dockerfile
+        run: docker run --rm --interactive hadolint/hadolint < ./backend/Atlas/Dockerfile
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pull HaDoLint Image
+        run: docker pull hadolint/hadolint
+      - name: Lint Dockerfile
+        run: docker run --rm --interactive hadolint/hadolint < ./frontend/ParkSpace/Dockerfile
+  database:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pull HaDoLint Image
+        run: docker pull hadolint/hadolint
+      - name: Lint Dockerfile
+        run: docker run --rm --interactive hadolint/hadolint < ./database/mysql/Dockerfile
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pull HaDoLint Image
+        run: docker pull hadolint/hadolint
+      - name: Lint Dockerfile
+        run: docker run --rm --interactive hadolint/hadolint < ./database/redis/Dockerfile
