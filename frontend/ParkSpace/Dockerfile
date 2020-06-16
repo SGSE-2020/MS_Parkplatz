@@ -4,7 +4,6 @@ WORKDIR /usr/src/app
 COPY . ./
 RUN npm ci
 RUN ./node_modules/.bin/ng build --prod --source-map=false
-
 # stage deploy
 FROM nginx:alpine
 EXPOSE 80
