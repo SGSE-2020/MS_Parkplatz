@@ -27,7 +27,7 @@ export class ReservationService {
   }
 
   createReservation(bookingModel: BookingModel) {
-    const href = `${environment.restApi}/reservations/`;
+    const href = `${environment.restApi}/reservations`;
     const requestUrl = `${href}`;
     return this.httpClient.post(requestUrl, bookingModel);
   }
