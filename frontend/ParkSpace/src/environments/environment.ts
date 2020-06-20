@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  restApi: 'https://' + 'localhost' + ':' + '8081',
+  restApi: 'http://' + 'localhost' + ':' + '8080',
 
   firebase: {
     apiKey: 'AIzaSyBvTg0_QrhEvQ9UeZPH8--E2JZ55KA_u_c',
