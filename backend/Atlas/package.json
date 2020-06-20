@@ -26,6 +26,7 @@
     "grpc-tools": "^1.9.0",
     "mysql": "^2.18.1",
     "pg-hstore": "^2.3.3",
+    "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "restify": "^8.5.1",
     "restify-cors-middleware": "^1.1.1",
