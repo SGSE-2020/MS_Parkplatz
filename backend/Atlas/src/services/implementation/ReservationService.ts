@@ -31,6 +31,11 @@ export class ReservationService implements IReservationService {
         const connection = await DatabaseProvider.getConnection();
         return connection.getRepository(ReservationEntity).save(t);
     }
+
+    public async cancelReservation(reservationId: string): Promise<any> {
+        const connection = await DatabaseProvider.getConnection();
+        return connection.getRepository(ReservationEntity).save({id: reservationId, cancelled: true});
+    }
 }
 
 export const reservationService = new ReservationService();

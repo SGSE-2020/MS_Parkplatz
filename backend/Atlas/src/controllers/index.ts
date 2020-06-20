@@ -2,10 +2,10 @@ import {GetUserInformation} from "./user/GetUserInformation";
 import {userService} from "../services/grpc/UserService";
 import {GetAllUserReservations} from "./reservation/GetAllUserReservations";
 import {reservationService} from "../services/implementation/ReservationService";
-import {DeleteReservations} from "./reservation/DeleteReservations";
 import {CreateReservation} from "./reservation/CreateReservation";
 import {GetAllParkingAreas} from "./area/GetAllParkingAreas";
 import {parkingAreaService} from "../services/implementation/ParkingAreaService";
+import {CancelReservations} from "./reservation/CancelReservations";
 
 export const CONTROLLERS = [
     // User
@@ -14,9 +14,7 @@ export const CONTROLLERS = [
     // Reservation
     new CreateReservation(reservationService),
     new GetAllUserReservations(reservationService),
-    new DeleteReservations(reservationService),
-    // new CreateReservation()
-    // new GetReservationById()
+    new CancelReservations(reservationService),
 
     // ParkingArea
     new GetAllParkingAreas(parkingAreaService)

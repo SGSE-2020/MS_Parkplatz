@@ -3,7 +3,8 @@ export interface ReservationDTO {
     start_timestamp: number,
     end_timestamp: number,
     state: string,
-    spot_id: string,
-    spot_name: string,
+    area_id: string,
+    area_name: string
     expired: boolean
+    note: string;
 }
