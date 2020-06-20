@@ -3,4 +3,5 @@ import {ReservationEntity} from "../../models/entity/ReservationEntity";
 
 export interface IReservationService extends Service<ReservationEntity> {
     getAllReservationsForUserId(userId: string): Promise<[ReservationEntity[], number]>;
+    cancelReservation(reservationId: string): Promise<any>;
 }

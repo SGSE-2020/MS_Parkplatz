@@ -6,7 +6,6 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {ReservationModel} from '../../models/reservation.model';
 import {ReservationService} from '../../services/reservation/reservation.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-itinerary',

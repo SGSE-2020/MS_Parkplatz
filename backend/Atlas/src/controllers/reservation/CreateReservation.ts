@@ -24,8 +24,9 @@ export class CreateReservation extends BaseController {
             const reservationDTO: ReservationDTO = this.req.body;
             const reservationEntity: ReservationEntity = {
                 id: uuidv4(),
-                spot_id: reservationDTO.spot_id,
+                area_id: reservationDTO.area_id,
                 user_id: userUid,
+                note: reservationDTO.note,
                 cancelled: false,
                 start_datetime: reservationDTO.start_timestamp,
                 end_datetime: reservationDTO.end_timestamp

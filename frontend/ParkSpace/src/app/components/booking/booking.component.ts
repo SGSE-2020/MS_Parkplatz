@@ -84,10 +84,11 @@ export class BookingComponent implements OnInit {
     }
 
     this.reservationService.createReservation({
-      area_id: 'string',
-      date_of_reservation: 'string',
-      end_of_reservation: 'string',
-      number_of_spots: 0,
+      area_id: this.selectedArea,
+      start_timestamp: new Date(this.form.controls.reservationStartDateTime.value).getTime() / 1000,
+      end_timestamp: new Date(this.form.controls.reservationEndDateTime.value).getTime() / 1000,
+      number_of_spots: this.form.controls.numberOfSpots.value,
+      note: this.form.controls.customerNote.value,
       insurance: false,
       cleaning: false,
       chauffeur: false,

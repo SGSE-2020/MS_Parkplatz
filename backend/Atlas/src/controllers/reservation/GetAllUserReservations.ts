@@ -28,8 +28,9 @@ export class GetAllUserReservations extends BaseController {
                 end_timestamp: x.end_datetime,
                 expired: !GetAllUserReservations.isFutureDate(x.end_datetime),
                 reservation_id: x.id,
-                spot_id: x.spot_id,
-                spot_name: 'Spot Name',
+                area_id: x.area_id,
+                area_name: 'Spot Name',
+                note: x.note,
                 start_timestamp: x.start_datetime,
                 state: GetAllUserReservations.getState(x)
             }))

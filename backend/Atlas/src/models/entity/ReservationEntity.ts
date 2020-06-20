@@ -6,10 +6,10 @@ export class ReservationEntity {
     public id: string;
 
     @Column()
-    public spot_id: string;
+    public user_id: string;
 
     @Column()
-    public user_id: string;
+    public area_id: string;
 
     @Column()
     public start_datetime: number;
@@ -19,4 +19,7 @@ export class ReservationEntity {
 
     @Column()
     public cancelled: boolean;
+
+    @Column()
+    public note: string;
 }

@@ -43,8 +43,9 @@ CREATE TABLE IF NOT EXISTS parkspace.reservation
 (
     id             VARCHAR(255) NOT NULL,
     user_id        VARCHAR(255) NULL,
-    start_datetime TIMESTAMP    NULL,
-    end_datetime   TIMESTAMP    NULL,
+    area_id        VARCHAR(255) NULL,
+    start_datetime INT          NULL,
+    end_datetime   INT          NULL,
     cancelled      BOOLEAN      NULL,
     PRIMARY KEY (id)
 );
