@@ -19,8 +19,9 @@ export class GetAllUserReservations extends BaseController {
 
     protected async executeImpl(): Promise<any> {
         try {
-            //TODO communicate with Bürgerbüro to get the userId
-            let reservationRepository = await this.reservationService.getAllReservationsForUserId('1');
+            // @ts-ignore
+            const userUid = this.req.userUid;
+            let reservationRepository = await this.reservationService.getAllReservationsForUserId(userUid);
 
             let reservations: ReservationDTO[] = [];
             reservationRepository[0].forEach(x => reservations.push({
@@ -33,11 +34,11 @@ export class GetAllUserReservations extends BaseController {
                 state: GetAllUserReservations.getState(x)
             }))
 
-            const quantizerDTO: QuantizerDTO = {
+            const quantizerDTO: QuantizerDTO<ReservationDTO> = {
                 total_count: reservationRepository[1],
                 items: reservations
             };
-            return await this.ok<QuantizerDTO>(this.res, quantizerDTO);
+            return await this.ok<QuantizerDTO<ReservationDTO>>(this.res, quantizerDTO);
         } catch (err) {
             return this.fail(err);
         }

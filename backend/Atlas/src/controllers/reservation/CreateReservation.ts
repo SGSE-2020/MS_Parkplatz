@@ -19,11 +19,13 @@ export class CreateReservation extends BaseController {
 
     protected async executeImpl(): Promise<any> {
         try {
+            // @ts-ignore
+            const userUid = this.req.userUid;
             const reservationDTO: ReservationDTO = this.req.body;
             const reservationEntity: ReservationEntity = {
                 id: uuidv4(),
                 spot_id: reservationDTO.spot_id,
-                user_id: "1",
+                user_id: userUid,
                 cancelled: false,
                 start_datetime: reservationDTO.start_timestamp,
                 end_datetime: reservationDTO.end_timestamp

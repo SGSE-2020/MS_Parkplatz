@@ -32,8 +32,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return cancelReservation();
         // case url.startsWith(`${environment.restApi}/users`) && method === 'GET':
         //   return queryUsers();
-        case url.startsWith(`${environment.restApi}/areas`) && method === 'GET':
-          return queryAreas();
+        // case url.startsWith(`${environment.restApi}/areas`) && method === 'GET':
+        //   return queryAreas();
         default:
           // pass through any requests not handled above
           return next.handle(request);

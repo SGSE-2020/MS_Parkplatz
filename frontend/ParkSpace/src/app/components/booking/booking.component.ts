@@ -15,7 +15,7 @@ import {AreaModel} from '../../models/area.model';
 export class BookingComponent implements OnInit {
   places: AreaModel[] = [];
 
-  selectedArea = '123-456-ABC';
+  selectedArea: string;
   consentTerms = false;
   consentPayment = false;
 
@@ -33,7 +33,15 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.areaService.getAvailableAreas().subscribe(x => this.places = x.items);
+    this.areaService.getAvailableAreas().subscribe(x => this.places = x.items, (err) => {
+      this.snackBar.open('There was an error while loading this website.', 'Dismiss', {
+        duration: 3600,
+      });
+      console.log(err);
+    }, () => {
+      this.selectedArea = this.places[0].id;
+    });
+
 
     this.form.controls.numberOfSpots.setValue(1, {onlySelf: true});
 
