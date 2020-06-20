@@ -67,11 +67,8 @@ export class User extends jspb.Message {
     getEmail(): string;
     setEmail(value: string): User;
 
-
-    hasBirthdate(): boolean;
-    clearBirthdate(): void;
-    getBirthdate(): Date | undefined;
-    setBirthdate(value?: Date): User;
+    getBirthdate(): string;
+    setBirthdate(value: string): User;
 
     getStreetaddress(): string;
     setStreetaddress(value: string): User;
@@ -88,8 +85,8 @@ export class User extends jspb.Message {
     getImage(): string;
     setImage(value: string): User;
 
-    getIactive(): boolean;
-    setIactive(value: boolean): User;
+    getIsactive(): boolean;
+    setIsactive(value: boolean): User;
 
 
     serializeBinary(): Uint8Array;
@@ -110,41 +107,12 @@ export namespace User {
         lastname: string,
         nickname: string,
         email: string,
-        birthdate?: Date.AsObject,
+        birthdate: string,
         streetaddress: string,
         zipcode: string,
         city: string,
         phone: string,
         image: string,
-        iactive: boolean,
-    }
-}
-
-export class Date extends jspb.Message { 
-    getYear(): number;
-    setYear(value: number): Date;
-
-    getMonth(): number;
-    setMonth(value: number): Date;
-
-    getDay(): number;
-    setDay(value: number): Date;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Date.AsObject;
-    static toObject(includeInstance: boolean, msg: Date): Date.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: Date, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Date;
-    static deserializeBinaryFromReader(message: Date, reader: jspb.BinaryReader): Date;
-}
-
-export namespace Date {
-    export type AsObject = {
-        year: number,
-        month: number,
-        day: number,
+        isactive: boolean,
     }
 }
