@@ -1,6 +1,4 @@
-import {ReservationDTO} from "./ReservationDTO";
-
-export interface QuantizerDTO {
+export interface QuantizerDTO<T> {
     total_count: number;
-    items: ReservationDTO[];
+    items: T[];
 }
