@@ -24,12 +24,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       switch (true) {
         case url.startsWith(`${environment.restApi}/reservations/latest`) && method === 'GET':
           return queryLatestReservation();
-        case url.startsWith(`${environment.restApi}/reservations`) && method === 'GET':
-          return queryReservation();
-        case url.startsWith(`${environment.restApi}/reservations`) && method === 'POST':
-          return newReservation();
-        case url.startsWith(`${environment.restApi}/reservations`) && method === 'DELETE':
-          return cancelReservation();
+        // case url.startsWith(`${environment.restApi}/reservations`) && method === 'GET':
+        //   return queryReservation();
+        // case url.startsWith(`${environment.restApi}/reservations`) && method === 'POST':
+        //   return newReservation();
+        // case url.startsWith(`${environment.restApi}/reservations`) && method === 'DELETE':
+        //   return cancelReservation();
         // case url.startsWith(`${environment.restApi}/users`) && method === 'GET':
         //   return queryUsers();
         // case url.startsWith(`${environment.restApi}/areas`) && method === 'GET':
