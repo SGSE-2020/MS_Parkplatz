@@ -34,9 +34,8 @@ export class CreateReservation extends BaseController {
                 end_datetime: reservationDTO.end_timestamp
             }
 
-            await new Messenger().send('reserviert', {id: reservationId, userId: userUid, areaId: reservationDTO.area_id})
-
             await this.reservationService.save(reservationEntity);
+            new Messenger().send('reserviert', {id: reservationId, userId: userUid, areaId: reservationDTO.area_id})
             return await this.created(this.res);
         } catch (err) {
             return this.fail(err);
