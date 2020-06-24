@@ -3,7 +3,8 @@ import {RestServer} from "../../server/RestServer";
 import {ReservationService} from "../../services/implementation/ReservationService";
 import {ReservationEntity} from "../../models/entity/ReservationEntity";
 import {ReservationDTO} from "../../models/dto/ReservationDTO";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
+import {Messenger} from "../../services/amqp/Messenger";
 
 export class CreateReservation extends BaseController {
     private reservationService: ReservationService;
@@ -22,8 +23,9 @@ export class CreateReservation extends BaseController {
             // @ts-ignore
             const userUid = this.req.userUid;
             const reservationDTO: ReservationDTO = this.req.body;
+            const reservationId = uuidv4();
             const reservationEntity: ReservationEntity = {
-                id: uuidv4(),
+                id: reservationId,
                 area_id: reservationDTO.area_id,
                 user_id: userUid,
                 note: reservationDTO.note,
@@ -33,6 +35,7 @@ export class CreateReservation extends BaseController {
             }
 
             await this.reservationService.save(reservationEntity);
+            new Messenger().send('reserviert', {id: reservationId, userId: userUid, areaId: reservationDTO.area_id})
             return await this.created(this.res);
         } catch (err) {
             return this.fail(err);
