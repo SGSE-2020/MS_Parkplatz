@@ -1,7 +1,7 @@
 import * as Amqp from "amqp-ts";
 
 export class Messenger {
-    public send(type: string, message: any) {
+    public async send(type: string, message: any) {
         const connection = new Amqp.Connection("amqp://localhost");
         const exchange = connection.declareExchange("parkplatz");
 
