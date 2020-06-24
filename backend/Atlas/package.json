@@ -33,6 +33,6 @@
     "restify-errors": "^8.0.2",
     "rimraf": "^3.0.2",
     "typeorm": "^0.2.25",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   }
 }
