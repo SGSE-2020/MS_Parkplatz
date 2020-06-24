@@ -1,11 +1,7 @@
 import {BaseController} from "../BaseController";
 import {RestServer} from "../../server/RestServer";
 import {UserService} from "../../services/grpc/UserService";
-import {User, UserId} from "../../proto/user_pb";
-import {UserServiceClient} from "../../proto/user_grpc_pb";
-import {civilOfficeGrpc} from "../../enviroment";
-import * as grpc from "grpc";
-import * as errors from "restify-errors";
+import {User} from "../../proto/user_pb";
 import {UserDTO} from "../../models/dto/UserDTO";
 
 export class GetUserInformation extends BaseController {
@@ -24,7 +20,7 @@ export class GetUserInformation extends BaseController {
         try {
             // @ts-ignore
             const userUid = this.req.userUid;
-            const result = await gRpcWrapper(userUid)
+            const result = await this.userService.gRpcWrapper(userUid)
             let user = (<User>result)
             let userDTO: UserDTO = {
                 firstName: user.getFirstname(),
@@ -39,32 +35,3 @@ export class GetUserInformation extends BaseController {
     }
 }
 
-function gRpcWrapper(query) {
-    return new Promise((resolve, reject) => {
-        gRpcVerify(query, (successResponse) => {
-            resolve(successResponse);
-        }, (errorResponse) => {
-            reject(errorResponse)
-        });
-    });
-}
-
-function gRpcVerify(uid, successCallback, errorCallback) {
-    const userId = new UserId();
-    userId.setUid(uid)
-
-    const userServiceClient = new UserServiceClient(civilOfficeGrpc, grpc.credentials.createInsecure());
-    userServiceClient.getUser(userId, function (err, response) {
-        if (err !== null) {
-            console.log(err);
-            errorCallback(new errors.InternalServerError('GetUserInformation:' + err));
-            // if (err.code == 2) {
-            //     errorCallback(new errors.InternalServerError('Backend Civil-Office not reachable.'));
-            // } else {
-            //     errorCallback(new errors.InternalServerError(err));
-            // }
-        } else {
-            successCallback(response)
-        }
-    });
-}
