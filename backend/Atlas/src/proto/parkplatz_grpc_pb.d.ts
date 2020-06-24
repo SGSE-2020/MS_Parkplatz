@@ -8,119 +8,100 @@ import * as grpc from "grpc";
 import * as parkplatz_pb from "./parkplatz_pb";
 
 interface IParkplatzService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    reserve: IParkplatzService_IReserve;
-    utilization: IParkplatzService_IUtilization;
-    terminate: IParkplatzService_ITerminate;
-    provide: IParkplatzService_IProvide;
-    edit: IParkplatzService_IEdit;
-    remove: IParkplatzService_IRemove;
+    reservation: IParkplatzService_Ireservation;
+    termination: IParkplatzService_Itermination;
+    utilization: IParkplatzService_Iutilization;
+    provision: IParkplatzService_Iprovision;
+    expulsion: IParkplatzService_Iexpulsion;
 }
 
-interface IParkplatzService_IReserve extends grpc.MethodDefinition<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply> {
-    path: string; // "/grpc.Parkplatz/Reserve"
+interface IParkplatzService_Ireservation extends grpc.MethodDefinition<parkplatz_pb.ReservationRequest, parkplatz_pb.ReservationDetails> {
+    path: string; // "/grpc.Parkplatz/reservation"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<parkplatz_pb.HelloRequest>;
-    requestDeserialize: grpc.deserialize<parkplatz_pb.HelloRequest>;
-    responseSerialize: grpc.serialize<parkplatz_pb.HelloReply>;
-    responseDeserialize: grpc.deserialize<parkplatz_pb.HelloReply>;
+    requestSerialize: grpc.serialize<parkplatz_pb.ReservationRequest>;
+    requestDeserialize: grpc.deserialize<parkplatz_pb.ReservationRequest>;
+    responseSerialize: grpc.serialize<parkplatz_pb.ReservationDetails>;
+    responseDeserialize: grpc.deserialize<parkplatz_pb.ReservationDetails>;
 }
-interface IParkplatzService_IUtilization extends grpc.MethodDefinition<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply> {
-    path: string; // "/grpc.Parkplatz/Utilization"
+interface IParkplatzService_Itermination extends grpc.MethodDefinition<parkplatz_pb.TerminationRequest, parkplatz_pb.ReservationDetails> {
+    path: string; // "/grpc.Parkplatz/termination"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<parkplatz_pb.HelloRequest>;
-    requestDeserialize: grpc.deserialize<parkplatz_pb.HelloRequest>;
-    responseSerialize: grpc.serialize<parkplatz_pb.HelloReply>;
-    responseDeserialize: grpc.deserialize<parkplatz_pb.HelloReply>;
+    requestSerialize: grpc.serialize<parkplatz_pb.TerminationRequest>;
+    requestDeserialize: grpc.deserialize<parkplatz_pb.TerminationRequest>;
+    responseSerialize: grpc.serialize<parkplatz_pb.ReservationDetails>;
+    responseDeserialize: grpc.deserialize<parkplatz_pb.ReservationDetails>;
 }
-interface IParkplatzService_ITerminate extends grpc.MethodDefinition<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply> {
-    path: string; // "/grpc.Parkplatz/Terminate"
+interface IParkplatzService_Iutilization extends grpc.MethodDefinition<parkplatz_pb.UtilizationRequest, parkplatz_pb.UtilizationDetails> {
+    path: string; // "/grpc.Parkplatz/utilization"
     requestStream: boolean; // false
-    responseStream: boolean; // false
-    requestSerialize: grpc.serialize<parkplatz_pb.HelloRequest>;
-    requestDeserialize: grpc.deserialize<parkplatz_pb.HelloRequest>;
-    responseSerialize: grpc.serialize<parkplatz_pb.HelloReply>;
-    responseDeserialize: grpc.deserialize<parkplatz_pb.HelloReply>;
+    responseStream: boolean; // true
+    requestSerialize: grpc.serialize<parkplatz_pb.UtilizationRequest>;
+    requestDeserialize: grpc.deserialize<parkplatz_pb.UtilizationRequest>;
+    responseSerialize: grpc.serialize<parkplatz_pb.UtilizationDetails>;
+    responseDeserialize: grpc.deserialize<parkplatz_pb.UtilizationDetails>;
 }
-interface IParkplatzService_IProvide extends grpc.MethodDefinition<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply> {
-    path: string; // "/grpc.Parkplatz/Provide"
+interface IParkplatzService_Iprovision extends grpc.MethodDefinition<parkplatz_pb.AreaRequest, parkplatz_pb.AreaDetails> {
+    path: string; // "/grpc.Parkplatz/provision"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<parkplatz_pb.HelloRequest>;
-    requestDeserialize: grpc.deserialize<parkplatz_pb.HelloRequest>;
-    responseSerialize: grpc.serialize<parkplatz_pb.HelloReply>;
-    responseDeserialize: grpc.deserialize<parkplatz_pb.HelloReply>;
+    requestSerialize: grpc.serialize<parkplatz_pb.AreaRequest>;
+    requestDeserialize: grpc.deserialize<parkplatz_pb.AreaRequest>;
+    responseSerialize: grpc.serialize<parkplatz_pb.AreaDetails>;
+    responseDeserialize: grpc.deserialize<parkplatz_pb.AreaDetails>;
 }
-interface IParkplatzService_IEdit extends grpc.MethodDefinition<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply> {
-    path: string; // "/grpc.Parkplatz/Edit"
+interface IParkplatzService_Iexpulsion extends grpc.MethodDefinition<parkplatz_pb.ExpulsionRequest, parkplatz_pb.AreaDetails> {
+    path: string; // "/grpc.Parkplatz/expulsion"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<parkplatz_pb.HelloRequest>;
-    requestDeserialize: grpc.deserialize<parkplatz_pb.HelloRequest>;
-    responseSerialize: grpc.serialize<parkplatz_pb.HelloReply>;
-    responseDeserialize: grpc.deserialize<parkplatz_pb.HelloReply>;
-}
-interface IParkplatzService_IRemove extends grpc.MethodDefinition<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply> {
-    path: string; // "/grpc.Parkplatz/Remove"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
-    requestSerialize: grpc.serialize<parkplatz_pb.HelloRequest>;
-    requestDeserialize: grpc.deserialize<parkplatz_pb.HelloRequest>;
-    responseSerialize: grpc.serialize<parkplatz_pb.HelloReply>;
-    responseDeserialize: grpc.deserialize<parkplatz_pb.HelloReply>;
+    requestSerialize: grpc.serialize<parkplatz_pb.ExpulsionRequest>;
+    requestDeserialize: grpc.deserialize<parkplatz_pb.ExpulsionRequest>;
+    responseSerialize: grpc.serialize<parkplatz_pb.AreaDetails>;
+    responseDeserialize: grpc.deserialize<parkplatz_pb.AreaDetails>;
 }
 
 export const ParkplatzService: IParkplatzService;
 
 export interface IParkplatzServer {
-    reserve: grpc.handleUnaryCall<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply>;
-    utilization: grpc.handleUnaryCall<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply>;
-    terminate: grpc.handleUnaryCall<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply>;
-    provide: grpc.handleUnaryCall<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply>;
-    edit: grpc.handleUnaryCall<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply>;
-    remove: grpc.handleUnaryCall<parkplatz_pb.HelloRequest, parkplatz_pb.HelloReply>;
+    reservation: grpc.handleUnaryCall<parkplatz_pb.ReservationRequest, parkplatz_pb.ReservationDetails>;
+    termination: grpc.handleUnaryCall<parkplatz_pb.TerminationRequest, parkplatz_pb.ReservationDetails>;
+    utilization: grpc.handleServerStreamingCall<parkplatz_pb.UtilizationRequest, parkplatz_pb.UtilizationDetails>;
+    provision: grpc.handleUnaryCall<parkplatz_pb.AreaRequest, parkplatz_pb.AreaDetails>;
+    expulsion: grpc.handleUnaryCall<parkplatz_pb.ExpulsionRequest, parkplatz_pb.AreaDetails>;
 }
 
 export interface IParkplatzClient {
-    reserve(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    reserve(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    reserve(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    utilization(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    utilization(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    utilization(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    terminate(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    terminate(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    terminate(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    provide(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    provide(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    provide(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    edit(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    edit(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    edit(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    remove(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    remove(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    remove(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
+    reservation(request: parkplatz_pb.ReservationRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    reservation(request: parkplatz_pb.ReservationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    reservation(request: parkplatz_pb.ReservationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    termination(request: parkplatz_pb.TerminationRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    termination(request: parkplatz_pb.TerminationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    termination(request: parkplatz_pb.TerminationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    utilization(request: parkplatz_pb.UtilizationRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<parkplatz_pb.UtilizationDetails>;
+    utilization(request: parkplatz_pb.UtilizationRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<parkplatz_pb.UtilizationDetails>;
+    provision(request: parkplatz_pb.AreaRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    provision(request: parkplatz_pb.AreaRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    provision(request: parkplatz_pb.AreaRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    expulsion(request: parkplatz_pb.ExpulsionRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    expulsion(request: parkplatz_pb.ExpulsionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    expulsion(request: parkplatz_pb.ExpulsionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
 }
 
 export class ParkplatzClient extends grpc.Client implements IParkplatzClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public reserve(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public reserve(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public reserve(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public utilization(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public utilization(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public utilization(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public terminate(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public terminate(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public terminate(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public provide(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public provide(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public provide(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public edit(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public edit(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public edit(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public remove(request: parkplatz_pb.HelloRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public remove(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
-    public remove(request: parkplatz_pb.HelloRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.HelloReply) => void): grpc.ClientUnaryCall;
+    public reservation(request: parkplatz_pb.ReservationRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    public reservation(request: parkplatz_pb.ReservationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    public reservation(request: parkplatz_pb.ReservationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    public termination(request: parkplatz_pb.TerminationRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    public termination(request: parkplatz_pb.TerminationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    public termination(request: parkplatz_pb.TerminationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.ReservationDetails) => void): grpc.ClientUnaryCall;
+    public utilization(request: parkplatz_pb.UtilizationRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<parkplatz_pb.UtilizationDetails>;
+    public utilization(request: parkplatz_pb.UtilizationRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<parkplatz_pb.UtilizationDetails>;
+    public provision(request: parkplatz_pb.AreaRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    public provision(request: parkplatz_pb.AreaRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    public provision(request: parkplatz_pb.AreaRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    public expulsion(request: parkplatz_pb.ExpulsionRequest, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    public expulsion(request: parkplatz_pb.ExpulsionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
+    public expulsion(request: parkplatz_pb.ExpulsionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: parkplatz_pb.AreaDetails) => void): grpc.ClientUnaryCall;
 }
