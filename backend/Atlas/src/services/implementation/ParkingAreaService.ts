@@ -13,18 +13,25 @@ export class ParkingAreaService implements IParkingAreaService {
         return Promise.resolve([0, 0]);
     }
 
-    getFreeSpotId(areaId: string): Promise<string> {
-        return Promise.resolve("");
+    public async getAreaById(areaId: string): Promise<ParkingAreaEntity> {
+        const connection = await DatabaseProvider.getConnection();
+        const condition = {where: {id: areaId}}
+        return await connection.getRepository(ParkingAreaEntity).findOne(condition);
     }
 
-    delete(t: ParkingAreaEntity): Promise<any> {
-        // not implemented
-        return Promise.resolve("not implemented");
+    public async delete(t: ParkingAreaEntity): Promise<any> {
+        const connection = await DatabaseProvider.getConnection();
+        return await connection
+            .createQueryBuilder()
+            .delete()
+            .from(ParkingAreaEntity)
+            .where("id = :id", {id: t.id})
+            .execute();
     }
 
-    save(t: ParkingAreaEntity): Promise<any> {
-        // not implemented
-        return Promise.resolve("not implemented");
+    public async save(t: ParkingAreaEntity): Promise<any> {
+        const connection = await DatabaseProvider.getConnection();
+        return connection.getRepository(ParkingAreaEntity).save(t);
     }
 }
 
