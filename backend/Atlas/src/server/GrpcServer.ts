@@ -16,25 +16,13 @@ export class ParkplatzServer implements IParkplatzServer {
     expulsion(call: ServerUnaryCall<ExpulsionRequest>, callback: sendUnaryData<AreaDetails>): void {
         let parkingAreaService = new ParkingAreaService();
         parkingAreaService.getAreaById(call.request.getAreaid()).then(x => {
-            parkingAreaService.delete(x);
+            parkingAreaService.delete(x).then(() => {
+                let details = new AreaDetails();
+                callback(null, details);
+            }, y => {
+                callback(y, null);
+            });
 
-            let details = new AreaDetails();
-            details.setTotalspots(x.totalSpots);
-            details.setAreaid(x.id);
-            details.setAmenities(x.amenities);
-            details.setCharging(x.charging);
-            details.setBar(x.bar);
-            details.setFacilities(x.facilities);
-            details.setFastFood(x.fast_food);
-            details.setFoodDrink(x.food_drink);
-            details.setGas(x.gas);
-            details.setGrill(x.grill);
-            details.setHotel(x.hotel);
-            details.setMedicalAid(x.medical_aid);
-            details.setShopping(x.shopping);
-            details.setHotel(x.hotel);
-
-            callback(null, details);
         }, x => {
             callback(x, null);
         });
