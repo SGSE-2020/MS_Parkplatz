@@ -29,6 +29,7 @@ message TerminationRequest {
 
 message AreaRequest {
     string displayName = 1;
+    AreaDetails areaDetails = 3;
 }
 
 message AreaDetails {

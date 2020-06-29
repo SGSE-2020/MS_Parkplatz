@@ -730,7 +730,8 @@ proto.parkplatz.AreaRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.parkplatz.AreaRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    displayname: jspb.Message.getFieldWithDefault(msg, 1, "")
+    displayname: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    areadetails: (f = msg.getAreadetails()) && proto.parkplatz.AreaDetails.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -771,6 +772,11 @@ proto.parkplatz.AreaRequest.deserializeBinaryFromReader = function(msg, reader) 
       var value = /** @type {string} */ (reader.readString());
       msg.setDisplayname(value);
       break;
+    case 3:
+      var value = new proto.parkplatz.AreaDetails;
+      reader.readMessage(value,proto.parkplatz.AreaDetails.deserializeBinaryFromReader);
+      msg.setAreadetails(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -807,6 +813,14 @@ proto.parkplatz.AreaRequest.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
+  f = message.getAreadetails();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.parkplatz.AreaDetails.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -825,6 +839,43 @@ proto.parkplatz.AreaRequest.prototype.getDisplayname = function() {
  */
 proto.parkplatz.AreaRequest.prototype.setDisplayname = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional AreaDetails areaDetails = 3;
+ * @return {?proto.parkplatz.AreaDetails}
+ */
+proto.parkplatz.AreaRequest.prototype.getAreadetails = function() {
+  return /** @type{?proto.parkplatz.AreaDetails} */ (
+    jspb.Message.getWrapperField(this, proto.parkplatz.AreaDetails, 3));
+};
+
+
+/**
+ * @param {?proto.parkplatz.AreaDetails|undefined} value
+ * @return {!proto.parkplatz.AreaRequest} returns this
+*/
+proto.parkplatz.AreaRequest.prototype.setAreadetails = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.parkplatz.AreaRequest} returns this
+ */
+proto.parkplatz.AreaRequest.prototype.clearAreadetails = function() {
+  return this.setAreadetails(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.parkplatz.AreaRequest.prototype.hasAreadetails = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
