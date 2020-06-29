@@ -4,150 +4,150 @@
 var grpc = require('grpc');
 var parkplatz_pb = require('./parkplatz_pb.js');
 
-function serialize_grpc_AreaDetails(arg) {
+function serialize_parkplatz_AreaDetails(arg) {
   if (!(arg instanceof parkplatz_pb.AreaDetails)) {
-    throw new Error('Expected argument of type grpc.AreaDetails');
+    throw new Error('Expected argument of type parkplatz.AreaDetails');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_AreaDetails(buffer_arg) {
+function deserialize_parkplatz_AreaDetails(buffer_arg) {
   return parkplatz_pb.AreaDetails.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_AreaRequest(arg) {
+function serialize_parkplatz_AreaRequest(arg) {
   if (!(arg instanceof parkplatz_pb.AreaRequest)) {
-    throw new Error('Expected argument of type grpc.AreaRequest');
+    throw new Error('Expected argument of type parkplatz.AreaRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_AreaRequest(buffer_arg) {
+function deserialize_parkplatz_AreaRequest(buffer_arg) {
   return parkplatz_pb.AreaRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_ExpulsionRequest(arg) {
+function serialize_parkplatz_ExpulsionRequest(arg) {
   if (!(arg instanceof parkplatz_pb.ExpulsionRequest)) {
-    throw new Error('Expected argument of type grpc.ExpulsionRequest');
+    throw new Error('Expected argument of type parkplatz.ExpulsionRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_ExpulsionRequest(buffer_arg) {
+function deserialize_parkplatz_ExpulsionRequest(buffer_arg) {
   return parkplatz_pb.ExpulsionRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_ReservationDetails(arg) {
+function serialize_parkplatz_ReservationDetails(arg) {
   if (!(arg instanceof parkplatz_pb.ReservationDetails)) {
-    throw new Error('Expected argument of type grpc.ReservationDetails');
+    throw new Error('Expected argument of type parkplatz.ReservationDetails');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_ReservationDetails(buffer_arg) {
+function deserialize_parkplatz_ReservationDetails(buffer_arg) {
   return parkplatz_pb.ReservationDetails.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_ReservationRequest(arg) {
+function serialize_parkplatz_ReservationRequest(arg) {
   if (!(arg instanceof parkplatz_pb.ReservationRequest)) {
-    throw new Error('Expected argument of type grpc.ReservationRequest');
+    throw new Error('Expected argument of type parkplatz.ReservationRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_ReservationRequest(buffer_arg) {
+function deserialize_parkplatz_ReservationRequest(buffer_arg) {
   return parkplatz_pb.ReservationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_TerminationRequest(arg) {
+function serialize_parkplatz_TerminationRequest(arg) {
   if (!(arg instanceof parkplatz_pb.TerminationRequest)) {
-    throw new Error('Expected argument of type grpc.TerminationRequest');
+    throw new Error('Expected argument of type parkplatz.TerminationRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_TerminationRequest(buffer_arg) {
+function deserialize_parkplatz_TerminationRequest(buffer_arg) {
   return parkplatz_pb.TerminationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_UtilizationDetails(arg) {
+function serialize_parkplatz_UtilizationDetails(arg) {
   if (!(arg instanceof parkplatz_pb.UtilizationDetails)) {
-    throw new Error('Expected argument of type grpc.UtilizationDetails');
+    throw new Error('Expected argument of type parkplatz.UtilizationDetails');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_UtilizationDetails(buffer_arg) {
+function deserialize_parkplatz_UtilizationDetails(buffer_arg) {
   return parkplatz_pb.UtilizationDetails.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_UtilizationRequest(arg) {
+function serialize_parkplatz_UtilizationRequest(arg) {
   if (!(arg instanceof parkplatz_pb.UtilizationRequest)) {
-    throw new Error('Expected argument of type grpc.UtilizationRequest');
+    throw new Error('Expected argument of type parkplatz.UtilizationRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_grpc_UtilizationRequest(buffer_arg) {
+function deserialize_parkplatz_UtilizationRequest(buffer_arg) {
   return parkplatz_pb.UtilizationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
 var ParkplatzService = exports.ParkplatzService = {
   reservation: {
-    path: '/grpc.Parkplatz/reservation',
+    path: '/parkplatz.Parkplatz/reservation',
     requestStream: false,
     responseStream: false,
     requestType: parkplatz_pb.ReservationRequest,
     responseType: parkplatz_pb.ReservationDetails,
-    requestSerialize: serialize_grpc_ReservationRequest,
-    requestDeserialize: deserialize_grpc_ReservationRequest,
-    responseSerialize: serialize_grpc_ReservationDetails,
-    responseDeserialize: deserialize_grpc_ReservationDetails,
+    requestSerialize: serialize_parkplatz_ReservationRequest,
+    requestDeserialize: deserialize_parkplatz_ReservationRequest,
+    responseSerialize: serialize_parkplatz_ReservationDetails,
+    responseDeserialize: deserialize_parkplatz_ReservationDetails,
   },
   termination: {
-    path: '/grpc.Parkplatz/termination',
+    path: '/parkplatz.Parkplatz/termination',
     requestStream: false,
     responseStream: false,
     requestType: parkplatz_pb.TerminationRequest,
     responseType: parkplatz_pb.ReservationDetails,
-    requestSerialize: serialize_grpc_TerminationRequest,
-    requestDeserialize: deserialize_grpc_TerminationRequest,
-    responseSerialize: serialize_grpc_ReservationDetails,
-    responseDeserialize: deserialize_grpc_ReservationDetails,
+    requestSerialize: serialize_parkplatz_TerminationRequest,
+    requestDeserialize: deserialize_parkplatz_TerminationRequest,
+    responseSerialize: serialize_parkplatz_ReservationDetails,
+    responseDeserialize: deserialize_parkplatz_ReservationDetails,
   },
   utilization: {
-    path: '/grpc.Parkplatz/utilization',
+    path: '/parkplatz.Parkplatz/utilization',
     requestStream: false,
     responseStream: true,
     requestType: parkplatz_pb.UtilizationRequest,
     responseType: parkplatz_pb.UtilizationDetails,
-    requestSerialize: serialize_grpc_UtilizationRequest,
-    requestDeserialize: deserialize_grpc_UtilizationRequest,
-    responseSerialize: serialize_grpc_UtilizationDetails,
-    responseDeserialize: deserialize_grpc_UtilizationDetails,
+    requestSerialize: serialize_parkplatz_UtilizationRequest,
+    requestDeserialize: deserialize_parkplatz_UtilizationRequest,
+    responseSerialize: serialize_parkplatz_UtilizationDetails,
+    responseDeserialize: deserialize_parkplatz_UtilizationDetails,
   },
   provision: {
-    path: '/grpc.Parkplatz/provision',
+    path: '/parkplatz.Parkplatz/provision',
     requestStream: false,
     responseStream: false,
     requestType: parkplatz_pb.AreaRequest,
     responseType: parkplatz_pb.AreaDetails,
-    requestSerialize: serialize_grpc_AreaRequest,
-    requestDeserialize: deserialize_grpc_AreaRequest,
-    responseSerialize: serialize_grpc_AreaDetails,
-    responseDeserialize: deserialize_grpc_AreaDetails,
+    requestSerialize: serialize_parkplatz_AreaRequest,
+    requestDeserialize: deserialize_parkplatz_AreaRequest,
+    responseSerialize: serialize_parkplatz_AreaDetails,
+    responseDeserialize: deserialize_parkplatz_AreaDetails,
   },
   expulsion: {
-    path: '/grpc.Parkplatz/expulsion',
+    path: '/parkplatz.Parkplatz/expulsion',
     requestStream: false,
     responseStream: false,
     requestType: parkplatz_pb.ExpulsionRequest,
     responseType: parkplatz_pb.AreaDetails,
-    requestSerialize: serialize_grpc_ExpulsionRequest,
-    requestDeserialize: deserialize_grpc_ExpulsionRequest,
-    responseSerialize: serialize_grpc_AreaDetails,
-    responseDeserialize: deserialize_grpc_AreaDetails,
+    requestSerialize: serialize_parkplatz_ExpulsionRequest,
+    requestDeserialize: deserialize_parkplatz_ExpulsionRequest,
+    responseSerialize: serialize_parkplatz_AreaDetails,
+    responseDeserialize: deserialize_parkplatz_AreaDetails,
   },
 };
 

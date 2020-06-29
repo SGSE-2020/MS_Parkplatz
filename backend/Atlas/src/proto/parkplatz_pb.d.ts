@@ -1,4 +1,4 @@
-// package: grpc
+// package: parkplatz
 // file: parkplatz.proto
 
 /* tslint:disable */

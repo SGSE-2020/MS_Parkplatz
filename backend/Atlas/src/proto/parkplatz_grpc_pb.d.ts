@@ -1,4 +1,4 @@
-// package: grpc
+// package: parkplatz
 // file: parkplatz.proto
 
 /* tslint:disable */
@@ -16,7 +16,7 @@ interface IParkplatzService extends grpc.ServiceDefinition<grpc.UntypedServiceIm
 }
 
 interface IParkplatzService_Ireservation extends grpc.MethodDefinition<parkplatz_pb.ReservationRequest, parkplatz_pb.ReservationDetails> {
-    path: string; // "/grpc.Parkplatz/reservation"
+    path: string; // "/parkplatz.Parkplatz/reservation"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<parkplatz_pb.ReservationRequest>;
@@ -25,7 +25,7 @@ interface IParkplatzService_Ireservation extends grpc.MethodDefinition<parkplatz
     responseDeserialize: grpc.deserialize<parkplatz_pb.ReservationDetails>;
 }
 interface IParkplatzService_Itermination extends grpc.MethodDefinition<parkplatz_pb.TerminationRequest, parkplatz_pb.ReservationDetails> {
-    path: string; // "/grpc.Parkplatz/termination"
+    path: string; // "/parkplatz.Parkplatz/termination"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<parkplatz_pb.TerminationRequest>;
@@ -34,7 +34,7 @@ interface IParkplatzService_Itermination extends grpc.MethodDefinition<parkplatz
     responseDeserialize: grpc.deserialize<parkplatz_pb.ReservationDetails>;
 }
 interface IParkplatzService_Iutilization extends grpc.MethodDefinition<parkplatz_pb.UtilizationRequest, parkplatz_pb.UtilizationDetails> {
-    path: string; // "/grpc.Parkplatz/utilization"
+    path: string; // "/parkplatz.Parkplatz/utilization"
     requestStream: boolean; // false
     responseStream: boolean; // true
     requestSerialize: grpc.serialize<parkplatz_pb.UtilizationRequest>;
@@ -43,7 +43,7 @@ interface IParkplatzService_Iutilization extends grpc.MethodDefinition<parkplatz
     responseDeserialize: grpc.deserialize<parkplatz_pb.UtilizationDetails>;
 }
 interface IParkplatzService_Iprovision extends grpc.MethodDefinition<parkplatz_pb.AreaRequest, parkplatz_pb.AreaDetails> {
-    path: string; // "/grpc.Parkplatz/provision"
+    path: string; // "/parkplatz.Parkplatz/provision"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<parkplatz_pb.AreaRequest>;
@@ -52,7 +52,7 @@ interface IParkplatzService_Iprovision extends grpc.MethodDefinition<parkplatz_p
     responseDeserialize: grpc.deserialize<parkplatz_pb.AreaDetails>;
 }
 interface IParkplatzService_Iexpulsion extends grpc.MethodDefinition<parkplatz_pb.ExpulsionRequest, parkplatz_pb.AreaDetails> {
-    path: string; // "/grpc.Parkplatz/expulsion"
+    path: string; // "/parkplatz.Parkplatz/expulsion"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<parkplatz_pb.ExpulsionRequest>;
