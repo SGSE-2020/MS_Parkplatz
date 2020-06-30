@@ -17,7 +17,7 @@ export class ReportComponent implements OnInit {
   form = this.fb.group({
     textArea: ['', [Validators.required]],
   });
-  selectedReservation: ReservationModel;
+  selectedReservation: any;
   reservations: ReservationModel[];
 
   consentTermsCheck = false;
@@ -52,17 +52,27 @@ export class ReportComponent implements OnInit {
       return;
     }
 
+    const reservation = this.reservations.find(x => x.reservation_id === this.selectedReservation);
+
     const report: ReportModel = {
-      areaId: this.selectedReservation.area_id,
-      reservationDate: this.selectedReservation.start_timestamp,
-      reservationId: this.selectedReservation.reservation_id,
+      areaId: reservation.area_id,
+      reservationDate: reservation.start_timestamp,
+      reservationId: reservation.reservation_id,
       userNote: this.form.controls.textArea.value
     };
 
-    this.reportService.postReport(report);
-
-    this.snackBar.open('Thank you for your booking!', 'Dismiss', {
-      duration: 3600,
+    this.reportService.postReport(report).subscribe(() => {
+      this.snackBar.open('Thank you for reporting problems!', 'Dismiss', {
+        duration: 3600,
+      });
+    }, () => {
+      this.snackBar.open('There was a error processing your report. Please try again later', 'Dismiss', {
+        duration: 6000,
+      });
+    }, () => {
+      this.snackBar.open('Thank you for reporting problems!', 'Dismiss', {
+        duration: 3600,
+      });
     });
   }
 
