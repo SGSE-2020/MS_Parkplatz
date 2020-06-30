@@ -1,5 +1,5 @@
 syntax = "proto3";
-package grpc;
+package parkplatz;
 
 service Parkplatz {
     rpc reservation (ReservationRequest) returns (ReservationDetails) {}
@@ -29,6 +29,7 @@ message TerminationRequest {
 
 message AreaRequest {
     string displayName = 1;
+    AreaDetails areaDetails = 3;
 }
 
 message AreaDetails {

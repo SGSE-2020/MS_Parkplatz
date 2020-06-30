@@ -22,8 +22,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function handleRoute() {
       switch (true) {
-        case url.startsWith(`${environment.restApi}/reservations/latest`) && method === 'GET':
-          return queryLatestReservation();
+        // case url.startsWith(`${environment.restApi}/reservations/latest`) && method === 'GET':
+        //   return queryLatestReservation();
         // case url.startsWith(`${environment.restApi}/reservations`) && method === 'GET':
         //   return queryReservation();
         // case url.startsWith(`${environment.restApi}/reservations`) && method === 'POST':

@@ -6,12 +6,12 @@ import {ReservationDTO} from "../../models/dto/ReservationDTO";
 import {ReservationEntity} from "../../models/entity/ReservationEntity";
 import {ParkingAreaService} from "../../services/implementation/ParkingAreaService";
 
-export class GetAllUserReservations extends BaseController {
+export class GetNextUserReservations extends BaseController {
     private reservationService: ReservationService;
     private areaService: ParkingAreaService;
 
     public initialize(httpServer: RestServer): void {
-        httpServer.get('/reservations', this.execute.bind(this));
+        httpServer.get('/reservations/latest', this.execute.bind(this));
     }
 
     public constructor(reservationService: any, areaService: any) {
@@ -24,24 +24,23 @@ export class GetAllUserReservations extends BaseController {
         try {
             // @ts-ignore
             const userUid = this.req.userUid;
-            let reservationRepository = await this.reservationService.getAllReservationsForUserId(userUid);
+            let reservationRepository = await this.reservationService.getNextReservationsForUserId(userUid);
             let areaRepository = await this.areaService.getAllParkingAreas();
-
-            let reservations: ReservationDTO[] = [];
-            reservationRepository[0].forEach(x => reservations.push({
-                end_timestamp: x.end_datetime,
-                expired: !GetAllUserReservations.isFutureDate(x.end_datetime),
-                reservation_id: x.id,
-                area_id: x.area_id,
-                area_name: areaRepository[0].find(i => i.id == x.area_id).displayName,
-                note: x.note,
-                start_timestamp: x.start_datetime,
-                state: GetAllUserReservations.getState(x)
-            }))
+            let reservation: ReservationDTO[] = [];
+            reservation.push({
+                end_timestamp: reservationRepository.end_datetime,
+                expired: !GetNextUserReservations.isFutureDate(reservationRepository.end_datetime),
+                reservation_id: reservationRepository.id,
+                area_id: reservationRepository.area_id,
+                area_name: areaRepository[0].find(i => i.id == reservationRepository.area_id).displayName,
+                note: reservationRepository.note,
+                start_timestamp: reservationRepository.start_datetime,
+                state: GetNextUserReservations.getState(reservationRepository)
+            });
 
             const quantizerDTO: QuantizerDTO<ReservationDTO> = {
-                total_count: reservationRepository[1],
-                items: reservations
+                total_count: 1,
+                items: reservation
             };
             return await this.ok<QuantizerDTO<ReservationDTO>>(this.res, quantizerDTO);
         } catch (err) {
@@ -51,7 +50,7 @@ export class GetAllUserReservations extends BaseController {
 
     private static getState(reservation: ReservationEntity): string {
         return reservation.cancelled ? 'Cancelled' :
-            GetAllUserReservations.isFutureDate(reservation.start_datetime) ? 'Pending' :
+            GetNextUserReservations.isFutureDate(reservation.start_datetime) ? 'Pending' :
                 'Expired';
     }
 

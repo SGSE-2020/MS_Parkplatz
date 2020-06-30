@@ -12,8 +12,8 @@
       <mat-form-field class="reservation-form">
         <mat-label>Reservation</mat-label>
         <mat-select [(value)]="selectedReservation">
-          <mat-option *ngFor="let reservation of reservations" [value]="reservation.id">
-            {{reservation.date * 1000  | date: 'dd.MM.yyyy HH:mm'}} {{reservation.displayName}}
+          <mat-option *ngFor="let reservation of reservations" [value]="reservation.reservation_id">
+            {{reservation.start_timestamp * 1000  | date: 'dd.MM.yyyy HH:mm'}} {{reservation.area_name}}
           </mat-option>
         </mat-select>
       </mat-form-field>

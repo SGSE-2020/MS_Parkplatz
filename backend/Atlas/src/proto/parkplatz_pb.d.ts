@@ -1,4 +1,4 @@
-// package: grpc
+// package: parkplatz
 // file: parkplatz.proto
 
 /* tslint:disable */
@@ -90,6 +90,12 @@ export class AreaRequest extends jspb.Message {
     setDisplayname(value: string): AreaRequest;
 
 
+    hasAreadetails(): boolean;
+    clearAreadetails(): void;
+    getAreadetails(): AreaDetails | undefined;
+    setAreadetails(value?: AreaDetails): AreaRequest;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): AreaRequest.AsObject;
     static toObject(includeInstance: boolean, msg: AreaRequest): AreaRequest.AsObject;
@@ -103,6 +109,7 @@ export class AreaRequest extends jspb.Message {
 export namespace AreaRequest {
     export type AsObject = {
         displayname: string,
+        areadetails?: AreaDetails.AsObject,
     }
 }
 
