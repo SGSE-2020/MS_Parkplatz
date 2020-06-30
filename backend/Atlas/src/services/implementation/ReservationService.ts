@@ -11,6 +11,14 @@ export class ReservationService implements IReservationService {
         });
     }
 
+    public async getNextReservationsForUserId(userId: string): Promise<ReservationEntity> {
+        const connection = await DatabaseProvider.getConnection();
+        return await connection.getRepository(ReservationEntity).findOne({
+            where: {user_id: userId},
+            order: {start_datetime: "DESC"}
+        });
+    }
+
     public async getReservationsById(reservationId: string): Promise<ReservationEntity> {
         const connection = await DatabaseProvider.getConnection();
         const condition = {where: {id: reservationId}}

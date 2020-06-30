@@ -7,6 +7,7 @@ import {GetAllParkingAreas} from "./area/GetAllParkingAreas";
 import {parkingAreaService} from "../services/implementation/ParkingAreaService";
 import {CancelReservations} from "./reservation/CancelReservations";
 import {PostReport} from "./report/PostReport";
+import {GetNextUserReservations} from "./reservation/GetNextUserReservation";
 
 export const CONTROLLERS = [
     // User
@@ -15,6 +16,7 @@ export const CONTROLLERS = [
     // Reservation
     new CreateReservation(reservationService),
     new GetAllUserReservations(reservationService, parkingAreaService),
+    new GetNextUserReservations(reservationService, parkingAreaService),
     new CancelReservations(reservationService),
 
     // ParkingArea
