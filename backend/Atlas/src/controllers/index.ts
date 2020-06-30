@@ -14,7 +14,7 @@ export const CONTROLLERS = [
 
     // Reservation
     new CreateReservation(reservationService),
-    new GetAllUserReservations(reservationService),
+    new GetAllUserReservations(reservationService, parkingAreaService),
     new CancelReservations(reservationService),
 
     // ParkingArea

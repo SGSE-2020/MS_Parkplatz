@@ -4,17 +4,20 @@ import {ReservationService} from "../../services/implementation/ReservationServi
 import {QuantizerDTO} from "../../models/dto/QuantizerDTO";
 import {ReservationDTO} from "../../models/dto/ReservationDTO";
 import {ReservationEntity} from "../../models/entity/ReservationEntity";
+import {ParkingAreaService} from "../../services/implementation/ParkingAreaService";
 
 export class GetAllUserReservations extends BaseController {
     private reservationService: ReservationService;
+    private areaService: ParkingAreaService;
 
     public initialize(httpServer: RestServer): void {
         httpServer.get('/reservations', this.execute.bind(this));
     }
 
-    public constructor(reservationService: any) {
+    public constructor(reservationService: any, areaService: any) {
         super();
         this.reservationService = reservationService;
+        this.areaService = areaService;
     }
 
     protected async executeImpl(): Promise<any> {
@@ -22,6 +25,7 @@ export class GetAllUserReservations extends BaseController {
             // @ts-ignore
             const userUid = this.req.userUid;
             let reservationRepository = await this.reservationService.getAllReservationsForUserId(userUid);
+            let areaRepository = await this.areaService.getAllParkingAreas();
 
             let reservations: ReservationDTO[] = [];
             reservationRepository[0].forEach(x => reservations.push({
@@ -29,7 +33,7 @@ export class GetAllUserReservations extends BaseController {
                 expired: !GetAllUserReservations.isFutureDate(x.end_datetime),
                 reservation_id: x.id,
                 area_id: x.area_id,
-                area_name: 'Spot Name',
+                area_name: areaRepository[0].find(i => i.id == x.area_id).displayName,
                 note: x.note,
                 start_timestamp: x.start_datetime,
                 state: GetAllUserReservations.getState(x)
