@@ -47,7 +47,7 @@
                 <button mat-raised-button color="warn" (click)="cancelReservation(row.reservation_id)">Cancel</button>
               </ng-container>
               <ng-template #expired>
-                <button mat-button>Report</button>
+                <button mat-button [routerLink]="'/report'">Report</button>
               </ng-template>
             </td>
           </ng-container>
@@ -106,7 +106,7 @@
                 <button mat-raised-button color="warn" (click)="cancelReservation(row.reservation_id)">Cancel</button>
               </ng-container>
               <ng-template #expired>
-                <button mat-button>Report</button>
+                <button mat-button [routerLink]="'/report'">Report</button>
               </ng-template>
             </td>
           </ng-container>
