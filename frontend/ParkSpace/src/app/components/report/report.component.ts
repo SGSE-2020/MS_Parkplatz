@@ -61,7 +61,7 @@ export class ReportComponent implements OnInit {
 
     this.reportService.postReport(report);
 
-    this.snackBar.open('Thank you for your booking!', 'Dismiss', {
+    this.snackBar.open('Thank you for reporting problems!', 'Dismiss', {
       duration: 3600,
     });
   }
