@@ -37,12 +37,9 @@ export class CreateReservation extends BaseController {
 
             await this.reservationService.save(reservationEntity);
             new Messenger().send('reserviert', {id: reservationId, userId: userUid, areaId: reservationDTO.area_id})
-            await paymentService.gRpcWrapper(userUid, 112).then(() => {
-                    return this.created(this.res);
-                }, err => {
-                    return this.fail(err);
-                }
-            );
+            paymentService.gRpcWrapper(userUid, 112);
+
+            return this.created(this.res);
         } catch (err) {
             return this.fail(err);
         }
