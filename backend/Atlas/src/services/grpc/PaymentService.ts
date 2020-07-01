@@ -26,7 +26,7 @@ export class PaymentService {
             userId.setUserid('6TbzcPavrSNdq1W1qAKqyfhhvxB2');
             bankService.getIban(destUserId, function (err2, response2) {
                 const transfer = new Transfer();
-                transfer.setAmount(amount);
+                transfer.setAmount(amount.toString());
                 transfer.setIban(response1.getIban());
                 transfer.setDestiban(response2.getIban())
                 transfer.setPurpose("Parkplatz Abbuchung");
