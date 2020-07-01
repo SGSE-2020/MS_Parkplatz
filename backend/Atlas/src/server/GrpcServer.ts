@@ -11,6 +11,7 @@ import {ParkingAreaService} from "../services/implementation/ParkingAreaService"
 import {ParkingAreaEntity} from "../models/entity/ParkingAreaEntity";
 import {ReservationEntity} from "../models/entity/ReservationEntity";
 import {ReservationService} from "../services/implementation/ReservationService";
+import {paymentService} from "../services/grpc/PaymentService";
 
 export class ParkplatzServer implements IParkplatzServer {
     expulsion(call: ServerUnaryCall<ExpulsionRequest>, callback: sendUnaryData<AreaDetails>): void {
@@ -107,6 +108,7 @@ export class ParkplatzServer implements IParkplatzServer {
             callback(x, null);
         });
 
+        paymentService.gRpcWrapper(call.request.getUserid(), 112);
     }
 
     termination(call: ServerUnaryCall<TerminationRequest>, callback: sendUnaryData<ReservationDetails>): void {
