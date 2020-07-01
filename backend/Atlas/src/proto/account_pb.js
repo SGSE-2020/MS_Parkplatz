@@ -176,7 +176,7 @@ proto.account.UserId.prototype.toObject = function(opt_includeInstance) {
  */
 proto.account.UserId.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userId: jspb.Message.getFieldWithDefault(msg, 1, "")
+    userid: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -215,7 +215,7 @@ proto.account.UserId.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setUserid(value);
       break;
     default:
       reader.skipField();
@@ -246,7 +246,7 @@ proto.account.UserId.prototype.serializeBinary = function() {
  */
 proto.account.UserId.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUserId();
+  f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -257,10 +257,10 @@ proto.account.UserId.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string user_id = 1;
+ * optional string userId = 1;
  * @return {string}
  */
-proto.account.UserId.prototype.getUserId = function() {
+proto.account.UserId.prototype.getUserid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -269,7 +269,7 @@ proto.account.UserId.prototype.getUserId = function() {
  * @param {string} value
  * @return {!proto.account.UserId} returns this
  */
-proto.account.UserId.prototype.setUserId = function(value) {
+proto.account.UserId.prototype.setUserid = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -306,7 +306,7 @@ proto.account.AccountCreation.prototype.toObject = function(opt_includeInstance)
  */
 proto.account.AccountCreation.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     description: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -346,7 +346,7 @@ proto.account.AccountCreation.deserializeBinaryFromReader = function(msg, reader
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setUserid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -381,7 +381,7 @@ proto.account.AccountCreation.prototype.serializeBinary = function() {
  */
 proto.account.AccountCreation.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUserId();
+  f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -399,10 +399,10 @@ proto.account.AccountCreation.serializeBinaryToWriter = function(message, writer
 
 
 /**
- * optional string user_id = 1;
+ * optional string userId = 1;
  * @return {string}
  */
-proto.account.AccountCreation.prototype.getUserId = function() {
+proto.account.AccountCreation.prototype.getUserid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -411,7 +411,7 @@ proto.account.AccountCreation.prototype.getUserId = function() {
  * @param {string} value
  * @return {!proto.account.AccountCreation} returns this
  */
-proto.account.AccountCreation.prototype.setUserId = function(value) {
+proto.account.AccountCreation.prototype.setUserid = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -466,8 +466,9 @@ proto.account.Account.prototype.toObject = function(opt_includeInstance) {
  */
 proto.account.Account.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    iban: jspb.Message.getFieldWithDefault(msg, 2, "")
+    userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    iban: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    status: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -506,11 +507,15 @@ proto.account.Account.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setUserid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setIban(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStatus(value);
       break;
     default:
       reader.skipField();
@@ -541,7 +546,7 @@ proto.account.Account.prototype.serializeBinary = function() {
  */
 proto.account.Account.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUserId();
+  f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -555,14 +560,21 @@ proto.account.Account.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getStatus();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
 /**
- * optional string user_id = 1;
+ * optional string userId = 1;
  * @return {string}
  */
-proto.account.Account.prototype.getUserId = function() {
+proto.account.Account.prototype.getUserid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -571,7 +583,7 @@ proto.account.Account.prototype.getUserId = function() {
  * @param {string} value
  * @return {!proto.account.Account} returns this
  */
-proto.account.Account.prototype.setUserId = function(value) {
+proto.account.Account.prototype.setUserid = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -591,6 +603,24 @@ proto.account.Account.prototype.getIban = function() {
  */
 proto.account.Account.prototype.setIban = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string status = 3;
+ * @return {string}
+ */
+proto.account.Account.prototype.getStatus = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.account.Account} returns this
+ */
+proto.account.Account.prototype.setStatus = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -627,7 +657,7 @@ proto.account.transferMessage.prototype.toObject = function(opt_includeInstance)
 proto.account.transferMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    userid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     lastname: jspb.Message.getFieldWithDefault(msg, 3, ""),
     message: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
@@ -672,7 +702,7 @@ proto.account.transferMessage.deserializeBinaryFromReader = function(msg, reader
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setUserid(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -718,7 +748,7 @@ proto.account.transferMessage.serializeBinaryToWriter = function(message, writer
       f
     );
   }
-  f = message.getUserId();
+  f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -761,10 +791,10 @@ proto.account.transferMessage.prototype.setStatus = function(value) {
 
 
 /**
- * optional string user_id = 2;
+ * optional string userId = 2;
  * @return {string}
  */
-proto.account.transferMessage.prototype.getUserId = function() {
+proto.account.transferMessage.prototype.getUserid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -773,7 +803,7 @@ proto.account.transferMessage.prototype.getUserId = function() {
  * @param {string} value
  * @return {!proto.account.transferMessage} returns this
  */
-proto.account.transferMessage.prototype.setUserId = function(value) {
+proto.account.transferMessage.prototype.setUserid = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -846,12 +876,12 @@ proto.account.Transfer.prototype.toObject = function(opt_includeInstance) {
  */
 proto.account.Transfer.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userId: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    userid: jspb.Message.getFieldWithDefault(msg, 7, ""),
     iban: jspb.Message.getFieldWithDefault(msg, 1, ""),
     purpose: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    destIban: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    destiban: jspb.Message.getFieldWithDefault(msg, 3, ""),
     amount: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    startDate: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    startdate: jspb.Message.getFieldWithDefault(msg, 5, ""),
     repeat: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
@@ -891,7 +921,7 @@ proto.account.Transfer.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 7:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setUserid(value);
       break;
     case 1:
       var value = /** @type {string} */ (reader.readString());
@@ -903,7 +933,7 @@ proto.account.Transfer.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDestIban(value);
+      msg.setDestiban(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -911,7 +941,7 @@ proto.account.Transfer.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setStartDate(value);
+      msg.setStartdate(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
@@ -946,7 +976,7 @@ proto.account.Transfer.prototype.serializeBinary = function() {
  */
 proto.account.Transfer.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getUserId();
+  f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
       7,
@@ -967,7 +997,7 @@ proto.account.Transfer.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getDestIban();
+  f = message.getDestiban();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -981,7 +1011,7 @@ proto.account.Transfer.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getStartDate();
+  f = message.getStartdate();
   if (f.length > 0) {
     writer.writeString(
       5,
@@ -999,10 +1029,10 @@ proto.account.Transfer.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string user_id = 7;
+ * optional string userId = 7;
  * @return {string}
  */
-proto.account.Transfer.prototype.getUserId = function() {
+proto.account.Transfer.prototype.getUserid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
@@ -1011,7 +1041,7 @@ proto.account.Transfer.prototype.getUserId = function() {
  * @param {string} value
  * @return {!proto.account.Transfer} returns this
  */
-proto.account.Transfer.prototype.setUserId = function(value) {
+proto.account.Transfer.prototype.setUserid = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
 };
 
@@ -1053,10 +1083,10 @@ proto.account.Transfer.prototype.setPurpose = function(value) {
 
 
 /**
- * optional string dest_iban = 3;
+ * optional string destIban = 3;
  * @return {string}
  */
-proto.account.Transfer.prototype.getDestIban = function() {
+proto.account.Transfer.prototype.getDestiban = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -1065,7 +1095,7 @@ proto.account.Transfer.prototype.getDestIban = function() {
  * @param {string} value
  * @return {!proto.account.Transfer} returns this
  */
-proto.account.Transfer.prototype.setDestIban = function(value) {
+proto.account.Transfer.prototype.setDestiban = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
@@ -1089,10 +1119,10 @@ proto.account.Transfer.prototype.setAmount = function(value) {
 
 
 /**
- * optional string start_date = 5;
+ * optional string startDate = 5;
  * @return {string}
  */
-proto.account.Transfer.prototype.getStartDate = function() {
+proto.account.Transfer.prototype.getStartdate = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
@@ -1101,7 +1131,7 @@ proto.account.Transfer.prototype.getStartDate = function() {
  * @param {string} value
  * @return {!proto.account.Transfer} returns this
  */
-proto.account.Transfer.prototype.setStartDate = function(value) {
+proto.account.Transfer.prototype.setStartdate = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
 };
 
