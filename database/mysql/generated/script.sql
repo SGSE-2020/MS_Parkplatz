@@ -55,6 +55,10 @@ CREATE TABLE IF NOT EXISTS parkspace.reservation
 -- -----------------------------------------------------
 INSERT INTO `area` (`id`, `displayName`, `totalSpots`, `food_drink`, `bar`, `fast_food`, `amenities`, `shopping`,
                     `facilities`, `two_wheeler`, `hotel`, `grill`, `medical_aid`, `gas`, `charging`)
+VALUES ("4cf079cd-907a-4885-ada7-314d4fa19945", "Restaurant", 81, "1", "1", "1", "1", "0", "1", "1", "0",
+        "0", "1", "0", "0");
+INSERT INTO `area` (`id`, `displayName`, `totalSpots`, `food_drink`, `bar`, `fast_food`, `amenities`, `shopping`,
+                    `facilities`, `two_wheeler`, `hotel`, `grill`, `medical_aid`, `gas`, `charging`)
 VALUES ("19CA1484-7D7A-C22E-2A58-4CE010F9F1E5", "Class Aptent Taciti LLP", 161, "1", "0", "1", "1", "0", "0", "0", "0",
         "0", "0", "0", "0");
 INSERT INTO `area` (`id`, `displayName`, `totalSpots`, `food_drink`, `bar`, `fast_food`, `amenities`, `shopping`,
