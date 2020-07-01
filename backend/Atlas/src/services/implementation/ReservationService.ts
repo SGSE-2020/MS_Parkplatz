@@ -6,7 +6,7 @@ export class ReservationService implements IReservationService {
     public async getAllReservationsForUserId(userId: string): Promise<[ReservationEntity[], number]> {
         const connection = await DatabaseProvider.getConnection();
         return await connection.getRepository(ReservationEntity).findAndCount({
-            where: {user_id: userId},
+            // where: {user_id: userId},
             order: {start_datetime: "DESC"}
         });
     }
