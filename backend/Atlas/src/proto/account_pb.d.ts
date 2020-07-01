@@ -7,8 +7,8 @@
 import * as jspb from "google-protobuf";
 
 export class UserId extends jspb.Message { 
-    getUserId(): string;
-    setUserId(value: string): UserId;
+    getUserid(): string;
+    setUserid(value: string): UserId;
 
 
     serializeBinary(): Uint8Array;
@@ -23,13 +23,13 @@ export class UserId extends jspb.Message {
 
 export namespace UserId {
     export type AsObject = {
-        userId: string,
+        userid: string,
     }
 }
 
 export class AccountCreation extends jspb.Message { 
-    getUserId(): string;
-    setUserId(value: string): AccountCreation;
+    getUserid(): string;
+    setUserid(value: string): AccountCreation;
 
     getDescription(): string;
     setDescription(value: string): AccountCreation;
@@ -47,17 +47,20 @@ export class AccountCreation extends jspb.Message {
 
 export namespace AccountCreation {
     export type AsObject = {
-        userId: string,
+        userid: string,
         description: string,
     }
 }
 
 export class Account extends jspb.Message { 
-    getUserId(): string;
-    setUserId(value: string): Account;
+    getUserid(): string;
+    setUserid(value: string): Account;
 
     getIban(): string;
     setIban(value: string): Account;
+
+    getStatus(): string;
+    setStatus(value: string): Account;
 
 
     serializeBinary(): Uint8Array;
@@ -72,8 +75,9 @@ export class Account extends jspb.Message {
 
 export namespace Account {
     export type AsObject = {
-        userId: string,
+        userid: string,
         iban: string,
+        status: string,
     }
 }
 
@@ -81,8 +85,8 @@ export class transferMessage extends jspb.Message {
     getStatus(): string;
     setStatus(value: string): transferMessage;
 
-    getUserId(): string;
-    setUserId(value: string): transferMessage;
+    getUserid(): string;
+    setUserid(value: string): transferMessage;
 
     getLastname(): string;
     setLastname(value: string): transferMessage;
@@ -104,15 +108,15 @@ export class transferMessage extends jspb.Message {
 export namespace transferMessage {
     export type AsObject = {
         status: string,
-        userId: string,
+        userid: string,
         lastname: string,
         message: string,
     }
 }
 
 export class Transfer extends jspb.Message { 
-    getUserId(): string;
-    setUserId(value: string): Transfer;
+    getUserid(): string;
+    setUserid(value: string): Transfer;
 
     getIban(): string;
     setIban(value: string): Transfer;
@@ -120,14 +124,14 @@ export class Transfer extends jspb.Message {
     getPurpose(): string;
     setPurpose(value: string): Transfer;
 
-    getDestIban(): string;
-    setDestIban(value: string): Transfer;
+    getDestiban(): string;
+    setDestiban(value: string): Transfer;
 
     getAmount(): string;
     setAmount(value: string): Transfer;
 
-    getStartDate(): string;
-    setStartDate(value: string): Transfer;
+    getStartdate(): string;
+    setStartdate(value: string): Transfer;
 
     getRepeat(): string;
     setRepeat(value: string): Transfer;
@@ -145,12 +149,12 @@ export class Transfer extends jspb.Message {
 
 export namespace Transfer {
     export type AsObject = {
-        userId: string,
+        userid: string,
         iban: string,
         purpose: string,
-        destIban: string,
+        destiban: string,
         amount: string,
-        startDate: string,
+        startdate: string,
         repeat: string,
     }
 }

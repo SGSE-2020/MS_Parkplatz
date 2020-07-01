@@ -18,17 +18,17 @@ export class PaymentService {
 
     public gRpcPay(uid, amount, successCallback, errorCallback) {
         const userId = new UserId();
-        userId.setUserId(uid);
+        userId.setUserid(uid);
 
         const bankService = new AccountServiceClient(bankGrpc, grpc.credentials.createInsecure())
         bankService.getIban(userId, function (err1, response1) {
             const destUserId = new UserId();
-            userId.setUserId('6TbzcPavrSNdq1W1qAKqyfhhvxB2');
+            userId.setUserid('6TbzcPavrSNdq1W1qAKqyfhhvxB2');
             bankService.getIban(destUserId, function (err2, response2) {
                 const transfer = new Transfer();
-                transfer.setAmount(amount);
+                transfer.setAmount(amount.toString());
                 transfer.setIban(response1.getIban());
-                transfer.setDestIban(response2.getIban())
+                transfer.setDestiban(response2.getIban())
                 transfer.setPurpose("Parkplatz Abbuchung");
                 bankService.transfer(transfer, function (err3, response3) {
                     errorCallback(new errors.InternalServerError('GetBankIBAN:' + err3));
