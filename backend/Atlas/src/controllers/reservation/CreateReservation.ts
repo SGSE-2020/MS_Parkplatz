@@ -5,6 +5,7 @@ import {ReservationEntity} from "../../models/entity/ReservationEntity";
 import {ReservationDTO} from "../../models/dto/ReservationDTO";
 import {v4 as uuidv4} from 'uuid';
 import {Messenger} from "../../services/amqp/Messenger";
+import {paymentService} from "../../services/grpc/PaymentService";
 
 export class CreateReservation extends BaseController {
     private reservationService: ReservationService;
@@ -36,7 +37,12 @@ export class CreateReservation extends BaseController {
 
             await this.reservationService.save(reservationEntity);
             new Messenger().send('reserviert', {id: reservationId, userId: userUid, areaId: reservationDTO.area_id})
-            return await this.created(this.res);
+            await paymentService.gRpcWrapper(userUid, 112).then(() => {
+                    return this.created(this.res);
+                }, err => {
+                    return this.fail(err);
+                }
+            );
         } catch (err) {
             return this.fail(err);
         }
