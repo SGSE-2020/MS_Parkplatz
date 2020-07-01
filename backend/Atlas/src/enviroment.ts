@@ -1,5 +1,7 @@
 const civilOfficeGrpc = 'ms-buergerbuero:50051';
-// const civilOfficeGrpc = 'localhost:50052';
+const bankGrpc = 'ms-bank:50051';
+
 export {
-    civilOfficeGrpc
+    civilOfficeGrpc,
+    bankGrpc
 }
