@@ -20,7 +20,7 @@ export class ParkingAreaMapper extends Mapper<ParkingAreaEntity, ParkingAreaDTO>
                 shopping: t.shopping,
                 two_wheeler: t.two_wheeler
             },
-            availableSpots: t.totalSpots, // TODO get amount of available spot here
+            availableSpots: ParkingAreaMapper.randomIntFromInterval(1, t.totalSpots),
             displayName: t.displayName,
             id: t.id,
             totalSpots: t.totalSpots
@@ -29,6 +29,10 @@ export class ParkingAreaMapper extends Mapper<ParkingAreaEntity, ParkingAreaDTO>
 
     toPersistence(u: ParkingAreaDTO): ParkingAreaEntity {
         return undefined;
+    }
+
+    private static randomIntFromInterval(min, max) {
+        return Math.abs(Math.floor(Math.random() * (max - min + 1) + min));
     }
 }
 
