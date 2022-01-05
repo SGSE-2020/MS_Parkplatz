@@ -18,7 +18,7 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "@grpc/proto-loader": "^0.5.4",
+    "@grpc/proto-loader": "^0.6.8",
     "@types/restify": "^8.4.2",
     "@types/restify-errors": "^4.3.3",
     "amqp-ts": "^1.8.0",
